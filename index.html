@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiuKai | &#23416;&#29983;&#23416;&#32722;&#27511;&#31243;&#32178;&#31449;</title>
+    <meta
+        name="description"
+        content="LiuKai &#30340;&#23416;&#29983;&#23416;&#32722;&#27511;&#31243;&#32178;&#31449;&#65292;&#20197;&#23416;&#32722;&#33032;&#32097;&#12289;&#33021;&#21147;&#22320;&#22294;&#12289;&#25104;&#26524;&#27284;&#26696;&#33287;&#21453;&#24605;&#32000;&#37636;&#25972;&#29702;&#33258;&#24049;&#30340;&#25104;&#38263;&#36556;&#36321;&#12290;"
+    >
+    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+</head>
+<body>
+    <canvas class="particle-canvas" aria-hidden="true"></canvas>
+    <div class="spotlight" aria-hidden="true"></div>
+    <div class="cursor" aria-hidden="true"></div>
+    <div class="cursor-follower" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <nav class="site-nav" aria-label="&#20027;&#35201;&#23566;&#35261;">
+            <a class="brand" href="#home" aria-label="&#22238;&#21040;&#39318;&#38913;">LiuKai</a>
+            <button class="theme-toggle" type="button" aria-label="&#20999;&#25563;&#20027;&#38988;" title="&#20999;&#25563;&#20027;&#38988;">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
+            <ul>
+                <li><a href="#home">&#39318;&#38913;</a></li>
+                <li><a href="#about">&#23416;&#32722;&#33032;&#32097;</a></li>
+                <li><a href="#skills">&#33021;&#21147;&#22320;&#22294;</a></li>
+                <li><a href="#projects">&#25104;&#26524;&#27284;&#26696;</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="hero-grid">
+                <div class="home-content">
+                    <p class="eyebrow">Student Introduction</p>
+                    <h1 class="glitch-effect">我是 LiuKai，這裡整理了我的學習過程與成果。</h1>
+                    <p class="hero-lead">
+                        我目前把自己的學習經驗整理成這個網站，內容包含課程學習、程式練習、團隊實作，以及生物與物理探究。比起單純列出做過什麼，我更想把自己怎麼學、怎麼修正、怎麼一步一步累積能力的過程整理清楚。
+                    </p>
+                    <p class="typing-text">學習脈絡 | 能力整理 | 成果摘要 | 反思紀錄</p>
+                    <div class="hero-actions">
+                        <a class="primary-btn" href="#about">先認識我</a>
+                        <a class="secondary-btn" href="#projects">看學習成果</a>
+                    </div>
+                    <div class="hero-signals" aria-label="&#23637;&#35261;&#23566;&#35261;">
+                        <div class="hero-signal">
+                            <span>&#31532; 01 &#31449;</span>
+                            <strong>&#23416;&#32722;&#33032;&#32097;</strong>
+                            <p>先看我怎麼把不同的學習經驗串成一條成長路線。</p>
+                        </div>
+                        <div class="hero-signal">
+                            <span>&#31532; 02 &#31449;</span>
+                            <strong>&#33021;&#21147;&#22320;&#22294;</strong>
+                            <p>把目前累積的能力分成思考、實作與紀錄三個方向。</p>
+                        </div>
+                        <div class="hero-signal">
+                            <span>&#31532; 03 &#31449;</span>
+                            <strong>&#25104;&#26524;&#27284;&#26696;</strong>
+                            <p>用四個主題快速看到我目前最主要的學習成果。</p>
+                        </div>
+                    </div>
+                    <div class="social-links" aria-label="&#31038;&#32676;&#36899;&#32080;">
+                        <a href="https://github.com/" class="social-icon" target="_blank" rel="noreferrer" aria-label="GitHub">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/" class="social-icon" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.instagram.com/" class="social-icon" target="_blank" rel="noreferrer" aria-label="Instagram">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <aside class="hero-panel" aria-label="&#23416;&#32722;&#25688;&#35201;">
+                    <p class="hero-panel__eyebrow">自我介紹</p>
+                    <ul class="hero-stats">
+                        <li>
+                            <strong>目前身份</strong>
+                            <span>學生，持續從課程、自學、競賽與實作中累積自己的能力。</span>
+                        </li>
+                        <li>
+                            <strong>學習方向</strong>
+                            <span>以程式思考、團隊實作、AI 練習與科學探究作為主要累積方向。</span>
+                        </li>
+                        <li>
+                            <strong>網站目的</strong>
+                            <span>把學習過程與成果整理成清楚的網站，方便回看，也讓別人了解我的成長方式。</span>
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+
+            <button class="scroll-indicator" type="button" aria-label="&#24448;&#19979;&#30475;&#26356;&#22810;">
+                <span class="mouse" aria-hidden="true"><span></span></span>
+                <span>&#24448;&#19979;&#30475;&#26356;&#22810;</span>
+            </button>
+        </section>
+
+        <section id="about">
+            <p class="section-kicker">&#23416;&#32722;&#33032;&#32097;</p>
+            <h2 class="section-title">&#25226;&#23416;&#32722;&#30475;&#25104;&#19968;&#26781;&#21487;&#20197;&#36208;&#36942;&#30340;&#25104;&#38263;&#21205;&#32218;</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        &#25105;&#24819;&#25563;&#19968;&#31278;&#26041;&#24335;&#21576;&#29694;&#23416;&#32722;&#27511;&#31243;&#65306;&#19981;&#26159;&#25226;&#20839;&#23481;&#20998;&#25955;&#25104;&#24456;&#22810;&#21312;&#22602;&#65292;&#32780;&#26159;&#35731;&#20154;&#33021;&#38918;&#30528;&#19968;&#26781;&#36335;&#32178;&#19979;&#30475;&#65292;&#24478;&#36215;&#40670;&#12289;&#36681;&#25240;&#28857;&#21040;&#29694;&#22312;&#30340;&#32000;&#37636;&#26041;&#24335;&#12290;
+                    </p>
+                    <p>
+                        &#25152;&#20197;&#36889;&#19968;&#21312;&#19981;&#20877;&#21482;&#26159;&#12300;&#38364;&#26044;&#25105;&#12301;&#65292;&#32780;&#26159;&#25226;&#25105;&#30340;&#23416;&#32722;&#26041;&#24335;&#25342;&#25104;&#19968;&#31278;&#26356;&#20687;&#23637;&#21312;&#30340;&#24418;&#24335;&#65306;&#27599;&#19968;&#27573;&#37117;&#20195;&#34920;&#19968;&#31278;&#25913;&#35722;&#65292;&#20063;&#20195;&#34920;&#25105;&#24590;&#40636;&#30475;&#24453;&#12300;&#23416;&#32681;&#12299;&#36889;&#20214;&#20107;&#12290;
+                    </p>
+                    <p>
+                        &#22312;&#25509;&#19979;&#20358;&#30340;&#20839;&#23481;&#35041;&#65292;&#20320;&#26371;&#30475;&#21040;&#33021;&#21147;&#26159;&#24590;&#40636;&#34987;&#25972;&#29702;&#30340;&#65292;&#25104;&#26524;&#26159;&#24590;&#40636;&#34987;&#38283;&#21855;&#30340;&#65292;&#20063;&#26371;&#30475;&#21040;&#25105;&#26159;&#24590;&#40636;&#25226;&#19981;&#21516;&#30340;&#23416;&#32722;&#32000;&#37636;&#37325;&#26032;&#20018;&#25104;&#19968;&#26781;&#21487;&#20197;&#34987;&#29702;&#35299;&#30340;&#36335;&#32178;&#12290;
+                    </p>
+                </div>
+
+                <div class="experience-cards">
+                    <article class="exp-card">
+                        <i class="fas fa-seedling" aria-hidden="true"></i>
+                        <h3>&#31532;&#19968;&#27573;&#65306;&#24478;&#22522;&#30990;&#20986;&#30332;</h3>
+                        <p>&#24478;&#31243;&#24335;&#22522;&#30990;&#12289;&#35506;&#22530;&#35264;&#23519;&#33287;&#22522;&#26412;&#35352;&#37636;&#38283;&#22987;&#65292;&#35731;&#25105;&#20808;&#23398;&#26371;&#24590;&#40636;&#30475;&#21839;&#38988;</p>
+                    </article>
+                    <article class="exp-card">
+                        <i class="fas fa-compass-drafting" aria-hidden="true"></i>
+                        <h3>&#31532;&#20108;&#27573;&#65306;&#25226;&#20839;&#23481;&#20570;&#25104;&#23526;&#20316;</h3>
+                        <p>&#24478; FTC&#12289;AI &#35347;&#32244;&#21040;&#31185;&#23416;&#25506;&#31350;&#65292;&#25105;&#38283;&#22987;&#25226;&#24819;&#27861;&#25289;&#21040;&#26356;&#25509;&#36817;&#30495;&#23526;&#30340;&#29694;&#22580;&#20013;</p>
+                    </article>
+                    <article class="exp-card">
+                        <i class="fas fa-film" aria-hidden="true"></i>
+                        <h3>&#31532;&#19977;&#27573;&#65306;&#25226;&#36942;&#31243;&#23637;&#38283;&#32102;&#20154;&#30475;</h3>
+                        <p>&#30446;&#21069;&#25105;&#26356;&#24819;&#20570;&#30340;&#65292;&#26159;&#25226;&#36942;&#31243;&#37325;&#26032;&#21487;&#35222;&#21270;&#65292;&#35731;&#27599;&#19968;&#20221;&#25104;&#26524;&#37117;&#33021;&#35498;&#20986;&#33258;&#24049;&#30340;&#25925;&#20107;</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <p class="section-kicker">&#33021;&#21147;&#22320;&#22294;</p>
+            <h2 class="section-title">&#25226;&#33021;&#21147;&#30475;&#25104;&#22320;&#22294;&#65292;&#32780;&#19981;&#21482;&#26159;&#31243;&#24230;&#26781;</h2>
+            <div class="skill-filters" role="tablist" aria-label="&#25216;&#33021;&#31721;&#36984;">
+                <button class="filter-btn is-active" type="button" data-filter="all" role="tab" aria-selected="true">&#20840;&#37096;</button>
+                <button class="filter-btn" type="button" data-filter="logic" role="tab" aria-selected="false">&#24605;&#32771;</button>
+                <button class="filter-btn" type="button" data-filter="practice" role="tab" aria-selected="false">&#22519;&#34892;</button>
+                <button class="filter-btn" type="button" data-filter="science" role="tab" aria-selected="false">&#35352;&#37636;</button>
+            </div>
+
+            <div class="skills-container">
+                <article class="skill-category" data-category="logic">
+                    <h3>&#20998;&#26512;&#21312;</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">&#21839;&#38988;&#20998;&#26512;</span>
+                            <div class="skill-bar" data-level="84%"></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">C++ / STL</span>
+                            <div class="skill-bar" data-level="80%"></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">&#28436;&#31639;&#27861;&#33287;&#32080;&#27083;&#36984;&#25799;</span>
+                            <div class="skill-bar" data-level="78%"></div>
+                        </div>
+                    </div>
+                    <p class="skill-note">&#25105;&#26371;&#20808;&#25226;&#21839;&#38988;&#30475;&#25104;&#26550;&#27083;&#65292;&#20877;&#27770;&#23450;&#35201;&#29992;&#20160;&#40636;&#24037;&#20855;&#21435;&#34389;&#29702;&#12290;</p>
+                </article>
+
+                <article class="skill-category" data-category="practice">
+                    <h3>&#23526;&#20316;&#21312;</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">FTC &#27231;&#22120;&#20154;&#23526;&#20316;</span>
+                            <div class="skill-bar" data-level="82%"></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">AI &#35347;&#32244;&#33287;&#35519;&#25972;</span>
+                            <div class="skill-bar" data-level="76%"></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">&#21839;&#38988;&#20462;&#27491;&#27969;&#31243;</span>
+                            <div class="skill-bar" data-level="84%"></div>
+                        </div>
+                    </div>
+                    <p class="skill-note">&#25226;&#24819;&#27861;&#20570;&#20986;&#20358;&#24460;&#65292;&#25105;&#26356;&#32722;&#24931;&#22312;&#28204;&#35430;&#20013;&#25214;&#21040;&#35201;&#20462;&#25913;&#30340;&#22320;&#26041;&#12290;</p>
+                </article>
+
+                <article class="skill-category" data-category="science">
+                    <h3>&#36664;&#20986;&#21312;</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">&#23526;&#39511;&#33287;&#25506;&#31350;&#32000;&#37636;</span>
+                            <div class="skill-bar" data-level="82%"></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">&#36039;&#26009;&#25972;&#29702;&#33287;&#35828;&#26126;</span>
+                            <div class="skill-bar" data-level="80%"></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">&#21453;&#24605;&#33287;&#25104;&#38263;&#24402;&#32013;</span>
+                            <div class="skill-bar" data-level="86%"></div>
+                        </div>
+                    </div>
+                    <p class="skill-note">&#26368;&#24460;&#25105;&#26371;&#25226;&#20839;&#23481;&#37325;&#26032;&#36681;&#25104;&#21029;&#20154;&#30475;&#24471;&#25026;&#30340;&#32000;&#37636;&#65292;&#35731;&#23416;&#32722;&#26377;&#27284;&#26696;&#20063;&#26377;&#24847;&#32681;&#12290;</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="projects">
+            <p class="section-kicker">&#25104;&#26524;&#27284;&#26696;</p>
+            <h2 class="section-title">&#25226;&#25104;&#26524;&#25910;&#26463;&#25104;&#22235;&#31278;&#33021;&#21147;&#35201;&#40670;&#65292;&#29992;&#25688;&#35201;&#30475;&#20986;&#37325;&#40670;</h2>
+            <div class="slot-machine" aria-label="&#23416;&#32722;&#25104;&#26524;&#25289;&#38712;">
+                <div class="slot-machine__copy">
+                    <p class="eyebrow">&#24555;&#36895;&#25506;&#32034;</p>
+                    <h3>&#25104;&#26524;&#25289;&#38712;</h3>
+                    <p>&#22914;&#26524;&#19981;&#30693;&#36947;&#35201;&#20808;&#30475;&#21738;&#19968;&#39006;&#65292;&#21487;&#20197;&#20808;&#24478;&#33021;&#21147;&#38754;&#21521;&#25277;&#19968;&#20491;&#20837;&#21475;&#65292;&#31934;&#24555;&#25214;&#21040;&#37325;&#40670;&#12290;</p>
+                </div>
+                <div class="slot-machine__game">
+                    <div class="slot-reels" aria-live="polite">
+                        <span class="slot-reel">LOGIC</span>
+                        <span class="slot-reel">BUILD</span>
+                        <span class="slot-reel">SCI</span>
+                    </div>
+                    <div class="slot-machine__actions">
+                        <button class="slot-spin primary-btn" type="button">&#36681;&#21205;</button>
+                    </div>
+                    <p class="slot-result">&#28310;&#20633;&#38283;&#22987;&#12290;</p>
+                </div>
+            </div>
+            <div class="project-grid">
+                <article class="project-card" data-slot-key="logic" aria-label="&#37007;&#36655;&#25512;&#29702;&#23416;&#32722;&#25104;&#26524;">
+                    <div class="project-cover project-cover--one" aria-hidden="true">
+                        <span>LOGIC</span>
+                    </div>
+                    <h3>STL &#33287;&#31243;&#24335;&#24605;&#32771;</h3>
+                    <p>&#29992;&#31243;&#24335;&#32244;&#32722;&#32000;&#37636;&#12300;&#24590;&#40636;&#24605;&#32771;&#12301;&#30340;&#36942;&#31243;&#12290;</p>
+                    <ul class="project-points">
+                        <li>C++ &#33287; STL &#24037;&#20855;&#25972;&#29702;</li>
+                        <li>&#36039;&#26009;&#32080;&#27083;&#36984;&#25799;&#33287;&#35299;&#38988;&#27493;&#39519;</li>
+                        <li>&#25226;&#24605;&#32771;&#26041;&#24335;&#36681;&#25104;&#21487;&#22238;&#30475;&#30340;&#31558;&#35352;</li>
+                    </ul>
+                </article>
+
+                <article class="project-card" data-slot-key="build" aria-label="&#21205;&#25163;&#23526;&#20316;&#23416;&#32722;&#25104;&#26524;">
+                    <div class="project-cover project-cover--two" aria-hidden="true">
+                        <span>BUILD</span>
+                    </div>
+                    <h3>FTC &#22296;&#38538;&#33287;&#27231;&#22120;&#20154;</h3>
+                    <p>&#25226;&#24037;&#31243;&#24819;&#27861;&#25918;&#36914;&#30495;&#23526;&#30340;&#31478;&#36093;&#33287;&#21512;&#20316;&#29694;&#22580;&#12290;</p>
+                    <ul class="project-points">
+                        <li>FTC &#22296;&#38538;&#21512;&#20316;&#33287;&#20998;&#24037;&#21332;&#35519;</li>
+                        <li>&#27231;&#22120;&#20154;&#32068;&#35037;&#12289;&#28204;&#35430;&#33287;&#20462;&#27491;</li>
+                        <li>&#25226;&#35373;&#35336;&#24819;&#27861;&#33853;&#21040;&#27604;&#36093;&#29694;&#22580;</li>
+                    </ul>
+                </article>
+
+                <article class="project-card" data-slot-key="solve" aria-label="&#35299;&#27770;&#21839;&#38988;&#23416;&#32722;&#25104;&#26524;">
+                    <div class="project-cover project-cover--three" aria-hidden="true">
+                        <span>SOLVE</span>
+                    </div>
+                    <h3>AI &#35347;&#32244;&#33287;&#20462;&#27491;</h3>
+                    <p>&#20197;&#12298;&#20998;&#26512;&#24046;&#36317;&#12299;&#33287;&#12298;&#21453;&#35206;&#35519;&#25972;&#12299;&#28858;&#20027;&#36600;&#30340;&#35299;&#38988;&#32000;&#37636;&#12290;</p>
+                    <ul class="project-points">
+                        <li>&#35264;&#23519;&#36664;&#20986;&#33287;&#30446;&#27161;&#33853;&#24046;</li>
+                        <li>&#20998;&#26512;&#38480;&#21046;&#33287;&#20462;&#25913;&#26041;&#21521;</li>
+                        <li>&#21453;&#35206;&#35519;&#25972;&#25552;&#31034;&#33287;&#31574;&#30053;</li>
+                    </ul>
+                </article>
+
+                <article class="project-card" data-slot-key="science" aria-label="&#31185;&#23416;&#33021;&#21147;&#23416;&#32722;&#25104;&#26524;">
+                    <div class="project-cover project-cover--four" aria-hidden="true">
+                        <span>SCIENCE</span>
+                    </div>
+                    <h3>&#29983;&#29289;&#33287;&#29289;&#29702;&#25506;&#31350;</h3>
+                    <p>&#25226;&#35264;&#23519;&#12289;&#35722;&#22240;&#12289;&#32080;&#35542;&#33287;&#32000;&#37636;&#19968;&#36215;&#30475;&#28165;&#26970;&#12290;</p>
+                    <ul class="project-points">
+                        <li>&#35264;&#23519;&#12289;&#20551;&#35373;&#33287;&#35722;&#22240;&#25511;&#21046;</li>
+                        <li>&#25226;&#23526;&#39511;&#36942;&#31243;&#25972;&#29702;&#25104;&#36039;&#26009;</li>
+                        <li>&#29992;&#32000;&#37636;&#25903;&#25744;&#26368;&#24460;&#32080;&#35542;</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 LiuKai &#23416;&#32722;&#27511;&#31243;&#32178;&#31449;&#12290; &#29992;&#32000;&#37636;&#25226;&#25104;&#38263;&#30041;&#19979;&#20358;&#65292;&#20063;&#29992;&#21453;&#24605;&#35731;&#19979;&#19968;&#27425;&#26356;&#24448;&#21069;&#19968;&#40670;&#12290;</p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" type="button" aria-label="&#22238;&#21040;&#39318;&#38913;" title="&#22238;&#21040;&#39318;&#38913;">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <div class="command-palette" aria-hidden="true" role="dialog" aria-modal="true" aria-label="&#25351;&#20196;&#38754;&#26495;">
+        <div class="command-palette__overlay" data-command-close></div>
+        <div class="command-palette__panel" role="document">
+            <div class="command-palette__search">
+                <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
+                <input id="command-input" type="text" autocomplete="off" placeholder="&#36664;&#20837;&#25351;&#20196;&#25110;&#21312;&#22602;&#21517;&#31281;">
+                <kbd>Ctrl K</kbd>
+            </div>
+            <p class="command-palette__hint">&#35430;&#35430;&#65306;&#25104;&#26524;&#12289;&#25216;&#33021;&#12289;&#33032;&#32097;&#12289;gold&#12290;</p>
+            <div class="command-palette__list" role="listbox" aria-label="&#21487;&#29992;&#25351;&#20196;"></div>
+            <p class="command-palette__empty">&#25214;&#19981;&#21040;&#31526;&#21512;&#30340;&#25351;&#20196;&#12290;</p>
+        </div>
+    </div>
+
+    <div class="easter-burst" aria-hidden="true"></div>
+    <div class="toast" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
