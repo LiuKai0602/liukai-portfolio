@@ -267,15 +267,15 @@ document.addEventListener('DOMContentLoaded', () => {
             canvas.style.height = `${height}px`;
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-            const baseCount = width < 720 ? 28 : 58;
+            const baseCount = width < 720 ? 20 : 42;
             const count = reduceMotion ? Math.floor(baseCount * 0.45) : baseCount;
             particles = Array.from({ length: count }, () => ({
                 x: Math.random() * width,
                 y: Math.random() * height,
                 vx: (Math.random() - 0.5) * 0.22,
                 vy: (Math.random() - 0.5) * 0.22,
-                r: Math.random() * 1.6 + 0.7,
-                glow: Math.random() * 0.45 + 0.35
+                r: Math.random() * 1.9 + 1,
+                glow: Math.random() * 0.5 + 0.45
             }));
         }
 
@@ -305,8 +305,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 ctx.beginPath();
-                ctx.fillStyle = `rgba(246, 223, 170, ${0.18 + particle.glow * 0.28})`;
-                ctx.shadowColor = 'rgba(216, 180, 106, 0.55)';
+                ctx.fillStyle = `rgba(246, 223, 170, ${0.16 + particle.glow * 0.24})`;
+                ctx.shadowColor = 'rgba(216, 180, 106, 0.5)';
                 ctx.shadowBlur = 10;
                 ctx.arc(particle.x, particle.y, particle.r, 0, Math.PI * 2);
                 ctx.fill();
@@ -317,10 +317,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     const dx = particle.x - next.x;
                     const dy = particle.y - next.y;
                     const distance = Math.hypot(dx, dy);
-                    if (distance > 130) continue;
+                    if (distance > 115) continue;
 
                     ctx.beginPath();
-                    ctx.strokeStyle = `rgba(216, 180, 106, ${0.12 * (1 - distance / 130)})`;
+                    ctx.strokeStyle = `rgba(216, 180, 106, ${0.11 * (1 - distance / 115)})`;
                     ctx.lineWidth = 1;
                     ctx.moveTo(particle.x, particle.y);
                     ctx.lineTo(next.x, next.y);
@@ -382,28 +382,84 @@ document.addEventListener('DOMContentLoaded', () => {
                 action: () => goToSection('#home')
             },
             {
-                title: '\u524d\u5f80\u5b78\u7fd2\u6b77\u7a0b',
-                desc: '\u95b1\u8b80\u5b78\u7fd2\u7d00\u9304',
+                title: '前往關於我',
+                desc: '閱讀自我介紹與申請主軸',
                 icon: 'fa-user',
                 keys: 'A',
-                keywords: 'about profile intro \u5b78\u7fd2\u6b77\u7a0b',
+                keywords: 'about profile intro 關於我 自我介紹',
                 action: () => goToSection('#about')
             },
             {
-                title: '\u524d\u5f80\u6280\u80fd\u6574\u7406',
-                desc: '\u67e5\u770b\u908f\u8f2f\u3001\u5be6\u4f5c\u8207\u79d1\u5b78\u80fd\u529b',
+                title: '前往 C++ STL',
+                desc: '查看自學過程、工具選擇與能力改變',
                 icon: 'fa-code',
                 keys: 'S',
-                keywords: 'skills logic build science ai ftc stl \u6280\u80fd \u80fd\u529b',
-                action: () => goToSection('#skills')
+                keywords: 'cpp c++ stl vector set stack map priority_queue 程式 自學',
+                action: () => goToSection('#cpp-stl')
             },
             {
-                title: '\u524d\u5f80\u5b78\u7fd2\u6210\u679c',
-                desc: '\u67e5\u770b\u56db\u5927\u80fd\u529b\u8207\u6210\u679c\u6a94\u6848',
-                icon: 'fa-layer-group',
+                title: '前往網站製作',
+                desc: '查看學習歷程網站與互動設計',
+                icon: 'fa-window-restore',
+                keys: 'W',
+                keywords: 'website web html css javascript 網站 製作',
+                action: () => goToSection('#programming')
+            },
+            {
+                title: '前往機器人實作',
+                desc: '查看 FTC 策略、設計與控制經驗',
+                icon: 'fa-robot',
                 keys: 'P',
-                keywords: 'projects work portfolio stl ftc ai science \u6210\u679c \u4f5c\u54c1',
-                action: () => goToSection('#projects')
+                keywords: 'robot ftc robotics 機器人 實作',
+                action: () => goToSection('#robotics')
+            },
+            {
+                title: '前往生物探究',
+                desc: '查看浮葉綠碇與植物觀察實驗',
+                icon: 'fa-seedling',
+                keys: 'B',
+                keywords: 'biology bio plant leaf 生物 探究 浮葉綠碇',
+                action: () => goToSection('#biology')
+            },
+            {
+                title: '前往物理探究',
+                desc: '查看溶液加熱、鋁罐平衡與吹泡泡實驗',
+                icon: 'fa-atom',
+                keys: 'PHY',
+                keywords: 'physics physical experiment 物理 探究 鋁罐 平衡',
+                action: () => goToSection('#physics')
+            },
+            {
+                title: '前往電資營',
+                desc: '查看 FPGA、Verilog 與麵包板實作',
+                icon: 'fa-flask',
+                keys: 'E',
+                keywords: 'experiment hardware fpga verilog 電資營 硬體',
+                action: () => goToSection('#experiment')
+            },
+            {
+                title: '前往 AI 訓練',
+                desc: '查看 LEGO 分類模型、訓練流程與反思',
+                icon: 'fa-brain',
+                keys: 'AI',
+                keywords: 'ai teachable machine lego model training 人工智慧 訓練',
+                action: () => goToSection('#ai-training')
+            },
+            {
+                title: '前往逢甲 PSD',
+                desc: '查看我的經驗與精密系統設計學程的連結',
+                icon: 'fa-diagram-project',
+                keys: 'PSD',
+                keywords: 'feng chia psd 逢甲 精密系統',
+                action: () => goToSection('#psd')
+            },
+            {
+                title: '前往未來規劃',
+                desc: '查看大學學習與職涯方向',
+                icon: 'fa-route',
+                keys: 'F',
+                keywords: 'future plan career 未來 規劃',
+                action: () => goToSection('#future')
             },
             {
                 title: '\u5207\u63db\u4e3b\u984c',
@@ -589,6 +645,100 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function initRobotSystem() {
+        const controls = Array.from(document.querySelectorAll('.robot-part'));
+        const detail = document.querySelector('.robot-detail');
+        if (controls.length === 0 || !detail) return;
+
+        const content = {
+            base: {
+                label: '底盤',
+                title: '麥克納姆輪負責全向移動',
+                points: [
+                    ['Problem', '遇到的問題', '得分策略需要快速接近 Sample、Basket 與角落得分區，移動方式必須穩定且容易操縱。'],
+                    ['Test', '測試方式', '以操縱手視角反覆測試路線、轉向、推動 Sample 與臨場補救。'],
+                    ['Fix', '修正方法', '使用 4 顆直流馬達驅動底盤，讓機器人具備較彈性的全向移動能力。'],
+                    ['Gain', '學到的能力', '把比賽策略轉成底盤控制方式，並保留現場調整空間。']
+                ]
+            },
+            arm: {
+                label: '手臂',
+                title: '以目標位置變數解決重力下垂',
+                points: [
+                    ['Problem', '遇到的問題', '手臂裝載夾子後過重，馬達轉到位置後仍會因重力掉落，無法穩定懸停。'],
+                    ['Test', '測試方式', '先嘗試按鈕控制馬達轉動秒數，再測試反向施力與不同角度設定。'],
+                    ['Fix', '解決方法', '改成設定 armTargetPosition 目標位置變數，讓控制系統依回傳資料自動微調校位，並加入轉動角度限制。'],
+                    ['Gain', '學到的能力', '用抽象變數處理真實機構問題，理解控制邏輯如何補足硬體限制。']
+                ]
+            },
+            claw: {
+                label: '夾子',
+                title: '從雙伺服改成齒輪聯動單伺服',
+                points: [
+                    ['Problem', '遇到的問題', '初代鋁製夾子過重，且 2 顆伺服馬達無法精準同步，導致 Sample 夾不緊。'],
+                    ['Test', '測試方式', '測試不同夾取角度、開合方式與材質重量對手臂負載的影響。'],
+                    ['Fix', '解決方法', '使用 SolidWorks 設計壓克力夾子減重，並以齒輪狀聯動讓 1 顆伺服馬達帶動兩側夾臂。'],
+                    ['Gain', '學到的能力', '機構設計不能只看功能，也要考慮重量、同步性與馬達負載。']
+                ]
+            },
+            rail: {
+                label: '滑軌',
+                title: '以連接件與位置控制完成升降',
+                points: [
+                    ['Problem', '遇到的問題', '滑軌無法直接與旁邊底盤穩定組裝，升降時也需要左右馬達同步控制。'],
+                    ['Test', '測試方式', '測試滑軌與底盤連接方式，並用類似手臂的目標位置變數控制滑軌升降。'],
+                    ['Fix', '解決方法', '使用 SolidWorks 設計兩塊壓克力作為滑軌與底盤的銜接件，並讓馬達依目標位置自動校正。'],
+                    ['Gain', '學到的能力', '理解機構連接、馬達角度與程式控制必須一起設計。']
+                ]
+            },
+            crisis: {
+                label: '賽場危機',
+                title: '滑軌故障後的硬體止血、軟體防護與策略重構',
+                isCrisis: true,
+                points: [
+                    ['Event', '事件', '比賽中途滑軌傳輸資料線損壞，單側馬達失去訊號，造成滑軌非對稱升起並結構變形。'],
+                    ['Hardware', '硬體止血', '在下一場比賽前強行拆除損壞滑軌組件，保留無法及時拆除的廢棄馬達以節省時間。'],
+                    ['Software', '軟體防護', '刪除滑軌操縱代碼避免誤觸空轉，但保留變數初始化，避免控制器因找不到變數而出錯。'],
+                    ['Strategy', '策略重構', '放棄高空 Basket，改用僅存手臂夾取 Sample，再由底盤化身推土機推入角落得分區。']
+                ]
+            }
+        };
+
+        function render(partKey) {
+            const selected = content[partKey] || content.base;
+            detail.classList.toggle('is-crisis', Boolean(selected.isCrisis));
+            detail.innerHTML = `
+                <p class="robot-detail__label">${selected.label}</p>
+                <h3>${selected.title}</h3>
+                <div class="detail-grid">
+                    ${selected.points.map(([label, heading, body]) => `
+                        <div class="detail-card">
+                            <span>${label}</span>
+                            <strong>${heading}</strong>
+                            <p>${body}</p>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        controls.forEach((button) => {
+            button.addEventListener('click', () => {
+                controls.forEach((control) => control.classList.toggle('is-active', control === button));
+                render(button.dataset.robotPart);
+            });
+        });
+    }
+
+    function initPdfPlaceholder() {
+        const button = document.querySelector('.pdf-placeholder');
+        if (!button) return;
+
+        button.addEventListener('click', () => {
+            showToast('完整 PDF 檔案可以之後再放到 assets 資料夾或改成雲端連結');
+        });
+    }
+
     // Each full-screen section gets its own scene timing so the page feels
     // closer to a product-style presentation instead of one long document.
     function initScrollReveal() {
@@ -610,20 +760,77 @@ document.addEventListener('DOMContentLoaded', () => {
             about: [
                 '.section-kicker',
                 '.section-title',
-                '.about-text',
-                '.about-text p',
-                '.exp-card'
+                '.story-copy',
+                '.metric-strip > div'
             ],
-            skills: [
+            'cpp-stl': [
                 '.section-kicker',
                 '.section-title',
-                '.skill-filters',
-                '.skill-category'
+                '.section-jump',
+                '.ai-lab-intro',
+                '.ai-class-grid div',
+                '.ai-process article',
+                '.ai-insight-panel'
             ],
-            projects: [
+            programming: [
                 '.section-kicker',
                 '.section-title',
-                '.slot-machine'
+                '.section-jump',
+                '.split-panel article',
+                '.capability-row article'
+            ],
+            robotics: [
+                '.section-kicker',
+                '.section-title',
+                '.robot-copy',
+                '.robot-system'
+            ],
+            biology: [
+                '.section-kicker',
+                '.section-title',
+                '.section-jump',
+                '.ai-lab-intro',
+                '.ai-class-grid div',
+                '.ai-process article',
+                '.ai-insight-panel'
+            ],
+            physics: [
+                '.section-kicker',
+                '.section-title',
+                '.story-copy',
+                '.metric-strip > div',
+                '.capability-row article'
+            ],
+            experiment: [
+                '.section-kicker',
+                '.section-title',
+                '.timeline article'
+            ],
+            'ai-training': [
+                '.section-kicker',
+                '.section-title',
+                '.ai-lab-intro',
+                '.ai-class-grid div',
+                '.ai-process article',
+                '.ai-insight-panel'
+            ],
+            experience: [
+                '.section-kicker',
+                '.section-title',
+                '.growth-grid article'
+            ],
+            psd: [
+                '.section-kicker',
+                '.section-title',
+                '.story-copy',
+                '.match-table div',
+                '.capability-row article'
+            ],
+            future: [
+                '.section-kicker',
+                '.section-title',
+                '.timeline article',
+                '.closing-panel'
             ]
         };
 
@@ -823,6 +1030,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initEasterEgg();
     initSkillBars();
     initSkillFilters();
+    initRobotSystem();
+    initPdfPlaceholder();
     initScrollReveal();
     initSmoothAnchorScroll();
     initActiveNav();

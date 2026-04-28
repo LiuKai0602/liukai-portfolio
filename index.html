@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LiuKai | 學生學習歷程網站</title>
+    <title>LiuKai | 逢甲 PSD 申請個人網站</title>
     <meta
         name="description"
-        content="LiuKai 的學生學習歷程網站，以學習脈絡、能力地圖、成果檔案與反思紀錄整理自己的成長軌跡。"
+        content="劉力愷的逢甲大學精密系統設計學士學位學程申請個人網站，以程式邏輯、FTC 機器人、科學探究與未來規劃呈現申請動機。"
     >
     <link rel="stylesheet" href="style.css">
     <link
@@ -28,9 +28,12 @@
             </button>
             <ul>
                 <li><a href="#home">首頁</a></li>
-                <li><a href="#about">學習脈絡</a></li>
-                <li><a href="#skills">能力地圖</a></li>
-                <li><a href="#projects">成果檔案</a></li>
+                <li><a href="#about">關於我</a></li>
+                <li><a href="#cpp-stl">程式與AI</a></li>
+                <li><a href="#robotics">機器人</a></li>
+                <li><a href="#biology">自然探究</a></li>
+                <li><a href="#psd">逢甲 PSD</a></li>
+                <li><a href="#future">未來規劃</a></li>
             </ul>
         </nav>
     </header>
@@ -39,43 +42,39 @@
         <section id="home">
             <div class="hero-grid hero-grid--centered">
                 <div class="home-content">
-                    <p class="eyebrow">Student Introduction</p>
-                    <h1 class="glitch-effect">我是劉力愷，這是我的學習歷程介紹網頁。</h1>
+                    <p class="eyebrow">Student Profile</p>
+                    <h1 class="glitch-effect">劉力愷｜熱情不斷推進，學習從不停歇</h1>
                     <p class="hero-lead">
-                        我目前把自己的學習經驗整理成這個網站，內容包含課程學習、程式練習、團隊實作，以及生物與物理探究。比起單純列出做過什麼，我更想把自己怎麼學、怎麼修正、怎麼一步一步累積能力的過程整理清楚。
+                        我是嘉義縣私立協同高級中學學生，個人特質是獨立負責、系統思維、熱於學習與探究實踐。高中期間，我持續投入程式設計、網頁設計、機器人、AI 與自然探究，也在團隊實作中累積領導、溝通與解決問題的經驗。
                     </p>
-                    <p class="typing-text">學習脈絡 | 能力整理 | 成果摘要 | 反思紀錄</p>
+                    <p class="typing-text">團隊領導 | 程式設計 | 邏輯分析 | 人際溝通</p>
                     <div class="hero-actions">
                         <a class="primary-btn" href="#about">先認識我</a>
-                        <a class="secondary-btn" href="#projects">看學習成果</a>
+                        <a class="secondary-btn" href="#psd">看申請主軸</a>
                     </div>
                     <div class="hero-signals" aria-label="展覽導覽">
                         <div class="hero-signal">
-                            <span>第 01 站</span>
-                            <strong>學習脈絡</strong>
-                            <p>先看我怎麼把不同的學習經驗串成一條成長路線。</p>
+                            <span>Personal Strength</span>
+                            <strong>專長能力</strong>
+                            <p>團隊領導、程式設計、邏輯分析與人際溝通，是我目前最主要的能力累積方向。</p>
                         </div>
                         <div class="hero-signal">
-                            <span>第 02 站</span>
-                            <strong>能力地圖</strong>
-                            <p>把目前累積的能力分成思考、實作與紀錄三個方向。</p>
+                            <span>Learning Focus</span>
+                            <strong>學習興趣</strong>
+                            <p>我對程式設計、網頁設計、機器人、新聞、AI 與料理都有興趣，並習慣從實作中探索。</p>
                         </div>
                         <div class="hero-signal">
-                            <span>第 03 站</span>
-                            <strong>成果檔案</strong>
-                            <p>用四個主題快速看到我目前最主要的學習成果。</p>
+                            <span>Core Trait</span>
+                            <strong>個人特質</strong>
+                            <p>獨立負責、系統思維、熱於學習與探究實踐，讓我能持續把想法整理成具體成果。</p>
                         </div>
                     </div>
-                    <div class="social-links" aria-label="社群連結">
-                        <a href="https://github.com/" class="social-icon" target="_blank" rel="noreferrer" aria-label="GitHub">
-                            <i class="fab fa-github" aria-hidden="true"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/" class="social-icon" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-                        </a>
-                        <a href="https://www.instagram.com/" class="social-icon" target="_blank" rel="noreferrer" aria-label="Instagram">
-                            <i class="fab fa-instagram" aria-hidden="true"></i>
-                        </a>
+                    <div class="social-links profile-tags" aria-label="個人興趣標籤">
+                        <span class="profile-tag">旅遊</span>
+                        <span class="profile-tag">籃球</span>
+                        <span class="profile-tag">機器人</span>
+                        <span class="profile-tag">AI</span>
+                        <span class="profile-tag">網頁設計</span>
                     </div>
                 </div>
             </div>
@@ -86,193 +85,373 @@
             </button>
         </section>
 
-        <section id="about">
-            <p class="section-kicker">學習脈絡</p>
-            <h2 class="section-title">把學習看成一條可以走過的成長動線</h2>
-            <div class="about-content">
-                <div class="about-text">
+        <section id="about" class="psd-section">
+            <p class="section-kicker">About Me</p>
+            <h2 class="section-title">從程式邏輯出發，讓系統穩定運作</h2>
+            <div class="story-layout">
+                <div class="story-copy">
                     <p>
-                        我想換一種方式呈現學習歷程：不是把內容分散成很多區塊，而是讓人能順著一條路線往下看，從起點、轉折點到現在的紀錄方式。
+                        我不只想把高中做過的成果排成清單，而是想呈現自己如何從課程學習、程式練習、團隊實作與自然探究中，逐漸找到「軟體如何控制真實設備」這個方向。
                     </p>
                     <p>
-                        所以這一區不再只是「關於我」，而是把我的學習方式整理成一種更像展區的形式：每一段都代表一種改變，也代表我怎麼看待「學習」這件事。
-                    </p>
-                    <p>
-                        在接下來的內容裡，你會看到能力是怎麼被整理的，成果是怎麼被歸納的，也會看到我是怎麼把不同的學習紀錄重新串成一條可以被理解的路線。
+                        在 FTC 機器人競賽中，我開始接觸馬達控制、機構設計與程式邏輯。當程式真的影響機器人的移動、夾取與升降時，我更確定自己想把程式能力延伸到設備控制、資料監控與智慧製造系統。
                     </p>
                 </div>
+                <div class="metric-strip" aria-label="個人能力摘要">
+                    <div><span>01</span><strong>程式邏輯</strong><p>把問題拆成可執行流程</p></div>
+                    <div><span>02</span><strong>機器人實作</strong><p>讓程式控制真實機構</p></div>
+                    <div><span>03</span><strong>科學探究</strong><p>從實驗中找出問題核心</p></div>
+                </div>
+            </div>
+        </section>
 
-                <div class="experience-cards">
-                    <article class="exp-card">
-                        <i class="fas fa-seedling" aria-hidden="true"></i>
-                        <h3>第一段：從基礎出發</h3>
-                        <p>從程式基礎、課堂觀察與基本記錄開始，讓我先學會怎麼看問題</p>
-                    </article>
-                    <article class="exp-card">
-                        <i class="fas fa-compass-drafting" aria-hidden="true"></i>
-                        <h3>第二段：把內容做成實作</h3>
-                        <p>從 FTC、AI 訓練到科學探究，我開始把想法拉到更接近真實的現場中</p>
-                    </article>
-                    <article class="exp-card">
-                        <i class="fas fa-film" aria-hidden="true"></i>
-                        <h3>第三段：把過程展開給人看</h3>
-                        <p>目前我更想做的，是把過程重新可視化，讓每一份成果都能說出自己的故事</p>
+        <section id="cpp-stl" class="psd-section">
+            <p class="section-kicker">C++ / STL</p>
+            <h2 class="section-title">C++ 進階自學｜從硬解到選擇合適工具</h2>
+            <div class="section-jump">
+                <a href="#cpp-stl">C++ / STL</a>
+                <a href="#programming">網站製作</a>
+                <a href="#ai-training">AI 訓練</a>
+            </div>
+            <div class="ai-lab-grid">
+                <article class="ai-lab-intro">
+                    <span class="panel-number">Motivation</span>
+                    <h3>用每週固定練習建立程式基礎</h3>
+                    <p>國中時我接觸基礎 C++，發現自己不排斥寫程式，反而願意花時間研究。高中自主學習時，我決定用解題的方式精進能力，因為解題能訓練邏輯，也能快速檢視自己不足。計畫開始後，我每週固定投入 6 小時以上，逐步累積 C++ 與基礎 STL 的使用能力。</p>
+                    <div class="tech-tags">
+                        <span>字串處理</span><span>陣列矩陣</span><span>遞迴</span><span>vector</span><span>set</span><span>priority_queue</span><span>stack</span><span>map</span>
+                    </div>
+                </article>
+                <div class="ai-class-grid" aria-label="C++ STL 學習工具分類">
+                    <div><span>Vector</span><strong>動態資料管理</strong><p>儲存不固定數量資料，避免預設大小限制。</p></div>
+                    <div><span>Set</span><strong>排序與去重</strong><p>生成數列時同時處理排序與重複問題。</p></div>
+                    <div><span>Stack</span><strong>狀態合併</strong><p>處理「最近狀態影響現在」的問題。</p></div>
+                    <div><span>Map</span><strong>分類統計</strong><p>用字串作為索引，完成分類計數與排序輸出。</p></div>
+                </div>
+            </div>
+
+            <div class="ai-process">
+                <article><span>Before</span><h3>一開始：憑感覺硬解</h3><p>剛開始面對複雜問題時，我常常只想趕快湊出答案，甚至光理解需求就會卡住。</p></article>
+                <article><span>Practice</span><h3>過程：分類練習</h3><p>我從字串、陣列矩陣、遞迴逐步練習，學會先整理輸入、拆解條件，再決定處理流程。</p></article>
+                <article><span>Tool</span><h3>改變：工具選擇</h3><p>接觸 STL 後，我開始先思考資料特性，再選擇 vector、set、stack、map 或 priority_queue。</p></article>
+                <article><span>Result</span><h3>成果：系統性思考</h3><p>我的解題方式從盲目嘗試，變成先判斷題型、選擇資料結構，再拆成可執行步驟。</p></article>
+            </div>
+
+            <div class="ai-insight-panel">
+                <div>
+                    <p class="robot-detail__label">Change</p>
+                    <h3>我理解到資料結構本身就是解題的一部分</h3>
+                    <p>以前我只會用迴圈硬做，容易讓程式變得冗長。後來我發現，像 map 能讓分類統計變得清楚，set 能同時處理排序與去重，stringstream 能穩定切割輸入資料。這些工具讓我不只追求答案正確，也開始重視程式是否清楚、穩定且容易維護。</p>
+                </div>
+                <ul class="clean-list">
+                    <li>建立穩定的基礎解題能力</li>
+                    <li>能依資料特性選擇合適 STL 容器</li>
+                    <li>從「湊答案」轉向「有步驟地拆解問題」</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="programming" class="psd-section">
+            <p class="section-kicker">Website Practice</p>
+            <h2 class="section-title">網站製作｜把學習成果整理成可閱讀的系統</h2>
+            <div class="section-jump">
+                <a href="#cpp-stl">C++ / STL</a>
+                <a href="#programming">網站製作</a>
+                <a href="#ai-training">AI 訓練</a>
+            </div>
+            <div class="split-panel">
+                <article>
+                    <span class="panel-number">A</span>
+                    <h3>學習歷程網站</h3>
+                    <p>我製作這個網站，是希望把高中期間累積的作品整理成完整脈絡。比起把檔案分散放置，我更想讓教授能順著頁面看見我的學習動機、過程、修正與成果。</p>
+                    <div class="tech-tags" aria-label="程式學習標籤">
+                        <span>HTML</span><span>CSS</span><span>JavaScript</span><span>互動設計</span><span>版面整理</span><span>內容策展</span>
+                    </div>
+                </article>
+                <article>
+                    <span class="panel-number">B</span>
+                    <h3>互動與測試</h3>
+                    <p>過程中，我反覆調整版面、互動效果與文字層次，讓網站不只是成果展示，也成為我練習數位表達與問題修正的作品。</p>
+                    <div class="feature-list">
+                        <p><strong>成果卡片互動</strong> 透過滑鼠位置計算，讓卡片產生 3D 傾斜與高光回饋。</p>
+                        <p><strong>背景粒子</strong> 使用 Canvas 製作粒子漂浮、連線與滑鼠互動效果。</p>
+                        <p><strong>指令面板</strong> 透過 Ctrl + K 快速搜尋網站功能並跳轉區塊。</p>
+                    </div>
+                </article>
+            </div>
+            <div class="capability-row">
+                <article><h3>內容整理</h3><p>把不同成果重新分類，讓每個作品都能對應到能力與申請動機。</p></article>
+                <article><h3>互動表達</h3><p>用動畫、指令面板與互動區塊，讓網站更像一份可閱讀的學習歷程。</p></article>
+                <article><h3>測試修正</h3><p>持續檢查版面、文字長度與手機顯示，讓成果更穩定呈現。</p></article>
+            </div>
+        </section>
+
+        <section id="robotics" class="psd-section">
+            <p class="section-kicker">Robotics</p>
+            <h2 class="section-title">FTC 機器人大賽｜從策略、設計到控制</h2>
+            <div class="robot-layout">
+                <div class="robot-copy">
+                    <p>我在 2024-2025 FIRST 機器人大賽臺灣選拔賽 FTC 項目中擔任隊長、程式組長與比賽操縱手。這份成果的主軸不是單純參賽，而是從比賽規則分析、得分策略、機器人設計、程式控制到賽場危機處理，完整經歷一次工程系統從構想到實作的過程。</p>
+                    <p>我們最後把設計原則收斂成「系統穩定度」與「單場最高得分效率」。相較於高風險、耗時且容易卡住的掛鉤得分，我們選擇以夾取 Sample、放入載物盒、滑軌上升後投入 Basket 作為核心得分策略。</p>
+                    <ul class="clean-list">
+                        <li>角色：隊長、程式組長、比賽操縱手</li>
+                        <li>策略：戰略放棄高風險掛鉤，專注穩定且高效率的 Basket 與角落得分</li>
+                        <li>配置：底盤 4 顆直流馬達、手臂 2 顆直流馬達、滑軌 2 顆直流馬達、夾子與置物盒各 1 顆伺服馬達</li>
+                        <li>流程：手臂下放、夾取 Sample、回收到置物盒、滑軌上伸、置物盒傾斜完成得分</li>
+                    </ul>
+                    <div class="feature-list">
+                        <p><strong>核心收穫</strong> 我體會到硬體設計與軟體控制是同一個系統：公差、材質、馬達演算法與控制邏輯會互相影響。</p>
+                        <p><strong>設計迭代</strong> 夾子、手臂與滑軌都不是一次完成，而是從測試中找出限制，再用材質、機構與程式控制逐步修正。</p>
+                    </div>
+                </div>
+                <div class="robot-system" aria-label="互動式機器人系統圖">
+                    <div class="robot-visual" aria-hidden="true">
+                        <div class="system-core">
+                            <span>FTC</span>
+                            <strong>Control</strong>
+                        </div>
+                        <span class="system-line system-line--base"></span>
+                        <span class="system-line system-line--arm"></span>
+                        <span class="system-line system-line--claw"></span>
+                        <span class="system-line system-line--rail"></span>
+                        <div class="system-node system-node--base"><i class="fas fa-compass" aria-hidden="true"></i><span>底盤</span></div>
+                        <div class="system-node system-node--arm"><i class="fas fa-code-branch" aria-hidden="true"></i><span>手臂</span></div>
+                        <div class="system-node system-node--claw"><i class="fas fa-gear" aria-hidden="true"></i><span>夾子</span></div>
+                        <div class="system-node system-node--rail"><i class="fas fa-arrow-up-long" aria-hidden="true"></i><span>滑軌</span></div>
+                    </div>
+                    <div class="robot-controls">
+                        <button class="robot-part is-active" type="button" data-robot-part="base">底盤</button>
+                        <button class="robot-part" type="button" data-robot-part="arm">手臂</button>
+                        <button class="robot-part" type="button" data-robot-part="claw">夾子</button>
+                        <button class="robot-part" type="button" data-robot-part="rail">滑軌</button>
+                        <button class="robot-part robot-part--alert" type="button" data-robot-part="crisis">危機處理</button>
+                    </div>
+                    <article class="robot-detail" aria-live="polite">
+                        <p class="robot-detail__label">底盤</p>
+                        <h3>麥克納姆輪負責全向移動</h3>
+                        <div class="detail-grid">
+                            <div class="detail-card"><span>Problem</span><strong>遇到的問題</strong><p>得分策略需要快速接近 Sample 與角落得分區。</p></div>
+                            <div class="detail-card"><span>Test</span><strong>測試方式</strong><p>以操縱手視角反覆測試路線、轉向與推動 Sample 的穩定度。</p></div>
+                            <div class="detail-card"><span>Fix</span><strong>修正方法</strong><p>以 4 顆直流馬達驅動底盤，讓移動、轉向與臨場補救更彈性。</p></div>
+                            <div class="detail-card"><span>Gain</span><strong>學到的能力</strong><p>把策略轉成機器人移動方式，並保留現場調整空間。</p></div>
+                        </div>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section id="skills">
-            <p class="section-kicker">能力地圖</p>
-            <h2 class="section-title">把能力看成地圖，而不只是程度條</h2>
-            <div class="skill-filters" role="tablist" aria-label="技能篩選">
-                <button class="filter-btn is-active" type="button" data-filter="all" role="tab" aria-selected="true">全部</button>
-                <button class="filter-btn" type="button" data-filter="logic" role="tab" aria-selected="false">思考</button>
-                <button class="filter-btn" type="button" data-filter="practice" role="tab" aria-selected="false">執行</button>
-                <button class="filter-btn" type="button" data-filter="science" role="tab" aria-selected="false">記錄</button>
+        <section id="biology" class="psd-section">
+            <p class="section-kicker">Biology Inquiry</p>
+            <h2 class="section-title">生物自然探究｜從植物觀察到浮葉綠碇變因實驗</h2>
+            <div class="section-jump">
+                <a href="#biology">生物探究</a>
+                <a href="#physics">物理探究</a>
+                <a href="#experiment">電資營</a>
             </div>
-
-            <div class="skills-container">
-                <article class="skill-category" data-category="logic">
-                    <h3>C++ / STL</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">問題分析</span>
-                            <div class="skill-bar" data-level="85%"></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">程式設計</span>
-                            <div class="skill-bar" data-level="90%"></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">邏輯思考</span>
-                            <div class="skill-bar" data-level="90%"></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">演算法與結構選擇</span>
-                            <div class="skill-bar" data-level="85%"></div>
-                        </div>
-                    </div>
-                    <p class="skill-note">我會先把問題拆成小步驟找出核心問題，再決定要用什麼工具去處理。</p>
+            <div class="ai-lab-grid">
+                <article class="ai-lab-intro">
+                    <span class="panel-number">Focus</span>
+                    <h3>把觀察轉成可驗證的問題</h3>
+                    <p>這門課從校園植物觀察、現象量化紀錄、科學論文 APA 格式與圖表製作開始，最後進入浮葉綠碇變因探討實驗。我在過程中練習觀察特徵、提出問題、設計變因，並把實驗結果轉成可以討論的資料。</p>
+                    <div class="tech-tags"><span>植物觀察</span><span>量化紀錄</span><span>APA 格式</span><span>圖表製作</span><span>變因設計</span></div>
                 </article>
+                <div class="ai-class-grid" aria-label="生物探究課程內容">
+                    <div><span>01</span><strong>植物觀察</strong><p>觀察異形南洋杉的樹幹、葉片與螺旋生長特徵。</p></div>
+                    <div><span>02</span><strong>現象量化</strong><p>觀察禮堂外石桌出沒學生，進行紀錄與圖表分析。</p></div>
+                    <div><span>03</span><strong>論文與圖表</strong><p>練習科學論文格式、APA 引用與圖表呈現。</p></div>
+                    <div><span>04</span><strong>浮葉綠碇</strong><p>透過葉片浮起速度分析光合作用速率。</p></div>
+                </div>
+            </div>
+            <div class="ai-process">
+                <article><span>Hypothesis</span><h3>假設建立</h3><p>我假設葉綠體越多，光合作用速率越快，因此葉片浮起速度也會越快。</p></article>
+                <article><span>Variable</span><h3>變因設計</h3><p>操縱變因為葉碇位置，控制光照時長、碳酸氫鈉濃度與燒杯容量，應變變因為葉碇浮起速度。</p></article>
+                <article><span>Problem</span><h3>結果落差</h3><p>一到四分鐘時，葉片邊緣浮起數量比中間葉碇多，與原本假設不同。</p></article>
+                <article><span>Fix</span><h3>修正方法</h3><p>重新檢查針筒密閉性，增加排出葉碇空氣的時間，並讓裁切位置更精確。</p></article>
+            </div>
+            <div class="ai-insight-panel">
+                <div>
+                    <p class="robot-detail__label">Reflection</p>
+                    <h3>我學到實驗不是只照步驟完成</h3>
+                    <p>在浮葉綠碇實驗中，真正重要的是當結果和假設不同時，能回頭檢查問題可能出在哪裡。這讓我練習從觀察、紀錄、分析到討論的完整科學探究流程。</p>
+                </div>
+                <ul class="clean-list">
+                    <li>培養觀察力、紀錄能力與分析力</li>
+                    <li>學會尋找變因並擬定實驗計畫</li>
+                    <li>透過團隊討論修正實驗問題</li>
+                </ul>
+            </div>
+        </section>
 
-                <article class="skill-category" data-category="practice">
-                    <h3>FTC 機器人實作</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">軟硬體結合</span>
-                            <div class="skill-bar" data-level="85%"></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Solidwork設計</span>
-                            <div class="skill-bar" data-level="70%"></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">問題修正</span>
-                            <div class="skill-bar" data-level="85%"></div>
-                        </div>
-                         <div class="skill-item">
-                            <span class="skill-name">自學能力</span>
-                            <div class="skill-bar" data-level="90%"></div>
-                        </div>
-                    </div>
-                    <p class="skill-note">把想法做出來後，我不斷在測試中尋找要優化或修改的地方。</p>
+        <section id="physics" class="psd-section">
+            <p class="section-kicker">Physics Inquiry</p>
+            <h2 class="section-title">物理自然探究｜用實作檢查現象背後的規律</h2>
+            <div class="story-layout">
+                <div class="story-copy">
+                    <p>物理自然探究與實作讓我更直接面對「做出來」和「想像中」的差距。課程中包含溶液加熱實驗、鋁罐平衡實驗與吹泡泡實驗，實驗主題之外，許多設計、操作與修正都需要自己觀察後決定。</p>
+                    <p>這段經驗讓我理解，物理探究不是只套公式，而是從現象出發，透過測試、紀錄與修正，找出影響結果的原因。</p>
+                </div>
+                <div class="metric-strip">
+                    <div><span>01</span><strong>溶液加熱</strong><p>觀察加熱過程與變化，練習控制條件與紀錄結果。</p></div>
+                    <div><span>02</span><strong>鋁罐平衡</strong><p>從重心、支撐與穩定狀態理解平衡現象。</p></div>
+                    <div><span>03</span><strong>吹泡泡實驗</strong><p>透過材料與操作條件觀察薄膜與形狀變化。</p></div>
+                </div>
+            </div>
+            <div class="capability-row">
+                <article><h3>觀察現象</h3><p>先把實驗中的變化記錄下來，再判斷哪些因素可能影響結果。</p></article>
+                <article><h3>動手修正</h3><p>遇到問題時，透過改變操作方式、重新測試與討論找出改善方向。</p></article>
+                <article><h3>連結工程</h3><p>我從實驗中感受到，穩定結果往往來自細節控制，這也和設備控制與精密系統設計有關。</p></article>
+            </div>
+        </section>
+
+        <section id="experiment" class="psd-section">
+            <p class="section-kicker">Hardware Practice</p>
+            <h2 class="section-title">中興大學電資營｜從程式邏輯到硬體輸出</h2>
+            <div class="timeline">
+                <article>
+                    <span>01</span>
+                    <h3>FPGA 與 Verilog</h3>
+                    <p>透過 Verilog 控制 EGO1 FPGA 開發板上的七段顯示器，並完成計算機與貪吃蛇小遊戲。</p>
+                    <div class="tech-tags"><span>Verilog</span><span>FPGA</span><span>七段顯示器</span></div>
                 </article>
-
-                <article class="skill-category" data-category="science">
-                    <h3>AI影像辨識訓練專案</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">測試修正</span>
-                            <div class="skill-bar" data-level="82%"></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">AI應用</span>
-                            <div class="skill-bar" data-level="80%"></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">邏輯分析</span>
-                            <div class="skill-bar" data-level="86%"></div>
-                        </div>
-                    </div>
-                    <p class="skill-note">最後我會把內容重新轉成別人看得懂的紀錄，讓學習有檔案也有意義。</p>
+                <article>
+                    <span>02</span>
+                    <h3>麵包板電路實作</h3>
+                    <p>在接線與元件配置中，我學到訊號傳遞與硬體位置都會影響最後結果，也訓練自己用系統化方式拆解問題。</p>
+                    <div class="tech-tags"><span>麵包板電路</span><span>訊號輸入</span><span>邏輯判斷</span><span>輸出控制</span></div>
                 </article>
             </div>
         </section>
 
-        <section id="projects">
-            <p class="section-kicker">成果檔案</p>
-            <h2 class="section-title">把成果收束成四種能力要點</h2>
-            <div class="slot-machine" aria-label="學習成果拉霸">
-                <div class="slot-machine__copy">
-                    <p class="eyebrow">快速探索</p>
-                    <h3>成果拉霸</h3>
-                    <p>如果不知道要先看哪一類，可以先從能力面向抽一個入口，快速找到重點。</p>
-                </div>
-                <div class="slot-machine__game">
-                    <div class="slot-reels" aria-live="polite">
-                        <span class="slot-reel">LOGIC</span>
-                        <span class="slot-reel">BUILD</span>
-                        <span class="slot-reel">SCI</span>
+        <section id="ai-training" class="psd-section">
+            <p class="section-kicker">AI Training</p>
+            <h2 class="section-title">AI 訓練｜用 Teachable Machine 建立 LEGO 功能分類模型</h2>
+            <div class="ai-lab-grid">
+                <article class="ai-lab-intro">
+                    <span class="panel-number">Purpose</span>
+                    <h3>從整理 LEGO 的問題出發</h3>
+                    <p>LEGO 零件種類多、功能差異大，分類時不能只看外觀，也需要理解零件用途。我希望透過這次 AI 訓練專題，嘗試讓影像辨識模型協助分類，觀察 AI 是否能提升整理效率。</p>
+                    <div class="tech-tags">
+                        <span>Teachable Machine</span>
+                        <span>影像辨識</span>
+                        <span>功能分類</span>
+                        <span>模型測試</span>
                     </div>
-                    <div class="slot-machine__actions">
-                        <button class="slot-spin primary-btn" type="button">轉動</button>
-                    </div>
-                    <p class="slot-result">準備開始。</p>
+                </article>
+                <div class="ai-class-grid" aria-label="LEGO 分類類別">
+                    <div><span>01</span><strong>輪胎類</strong><p>用於移動與底盤結構。</p></div>
+                    <div><span>02</span><strong>基礎結構</strong><p>組成主要支撐與外型。</p></div>
+                    <div><span>03</span><strong>感測器</strong><p>負責偵測與回傳資訊。</p></div>
+                    <div><span>04</span><strong>馬達</strong><p>提供機構運動與動力。</p></div>
                 </div>
             </div>
-            <div class="project-grid">
-                <article class="project-card" data-slot-key="logic" aria-label="邏輯推理學習成果">
-                    <div class="project-cover project-cover--one" aria-hidden="true">
-                        <span>LOGIC</span>
-                    </div>
-                    <h3>STL 與程式思考</h3>
-                    <p>用程式練習紀錄「怎麼思考」的過程。</p>
-                    <ul class="project-points">
-                        <li>C++ 與 STL 工具整理</li>
-                        <li>資料結構選擇與解題步驟</li>
-                        <li>把思考方式轉成可回看的筆記</li>
-                    </ul>
-                </article>
 
-                <article class="project-card" data-slot-key="build" aria-label="動手實作學習成果">
-                    <div class="project-cover project-cover--two" aria-hidden="true">
-                        <span>BUILD</span>
-                    </div>
-                    <h3>FTC 團隊與機器人</h3>
-                    <p>把工程想法放進真實的競賽與合作現場。</p>
-                    <ul class="project-points">
-                        <li>FTC 團隊合作與分工協調</li>
-                        <li>機器人組裝、測試與修正</li>
-                        <li>把設計想法落到比賽現場</li>
-                    </ul>
+            <div class="ai-process">
+                <article>
+                    <span>Step 01</span>
+                    <h3>定義分類原則</h3>
+                    <p>先將 LEGO 依功能分成輪胎類、基礎結構、感測器與馬達，讓模型不是只看圖片外觀，而是朝功能分類目標訓練。</p>
                 </article>
+                <article>
+                    <span>Step 02</span>
+                    <h3>輸入圖片資料</h3>
+                    <p>主要使用白底、清楚可辨識的圖片，並在每個分類中放入不同顏色的樣本，避免模型只依顏色判斷。</p>
+                </article>
+                <article>
+                    <span>Step 03</span>
+                    <h3>設定參數並訓練</h3>
+                    <p>透過調整訓練次數、每次訓練資料量與模型設定，觀察訓練精確度、損失值與正確率的變化。</p>
+                </article>
+                <article>
+                    <span>Step 04</span>
+                    <h3>測試與分析</h3>
+                    <p>測試分成正常好辨識圖片與較難辨識圖片，再透過正確率、混淆矩陣、損失值圖表與正確率圖表分析模型表現。</p>
+                </article>
+            </div>
 
-                <article class="project-card" data-slot-key="solve" aria-label="解決問題學習成果">
-                    <div class="project-cover project-cover--three" aria-hidden="true">
-                        <span>SOLVE</span>
-                    </div>
-                    <h3>AI 訓練與修正</h3>
-                    <p>以《分析差距》與《反覆調整》為主軸的解題紀錄。</p>
-                    <ul class="project-points">
-                        <li>觀察輸出與目標落差</li>
-                        <li>分析限制與修改方向</li>
-                        <li>反覆調整提示與策略</li>
-                    </ul>
-                </article>
+            <div class="ai-insight-panel">
+                <div>
+                    <p class="robot-detail__label">Reflection</p>
+                    <h3>我學到 AI 訓練不是只靠程式</h3>
+                    <p>這次專題讓我理解，AI 模型的效果取決於分類原則、圖片品質、樣本數量、參數設定與測試方式。若資料設計不清楚，模型就可能抓錯特徵；因此我在訓練時刻意加入不同顏色樣本，希望模型更重視形狀與功能，而不是單純依顏色判斷。</p>
+                </div>
+                <ul class="clean-list">
+                    <li>理解分類系統與特徵萃取的概念</li>
+                    <li>學會用圖表與混淆矩陣檢查模型表現</li>
+                    <li>知道 AI 能提升效率，但前提是人要先定義清楚問題</li>
+                </ul>
+            </div>
+        </section>
 
-                <article class="project-card" data-slot-key="science" aria-label="科學能力學習成果">
-                    <div class="project-cover project-cover--four" aria-hidden="true">
-                        <span>SCIENCE</span>
-                    </div>
-                    <h3>生物與物理探究</h3>
-                    <p>把觀察、變因、結論與紀錄一起看清楚。</p>
-                    <ul class="project-points">
-                        <li>觀察、假設與變因控制</li>
-                        <li>把實驗過程整理成資料</li>
-                        <li>用紀錄支撐最後結論</li>
-                    </ul>
+        <section id="experience" class="psd-section">
+            <p class="section-kicker">Leadership & Growth</p>
+            <h2 class="section-title">多元表現｜在團隊中承擔責任，讓合作成為完成目標的力量</h2>
+            <div class="growth-grid">
+                <article>
+                    <h3>學習修正</h3>
+                    <p><strong>數學：</strong>從模擬考 2 級分開始，我重新補基礎、整理常錯題，學會找出問題核心再循序處理。</p>
+                    <p><strong>英文：</strong>從只背單字，改成大量閱讀、先看題目再回到文章找重點，逐漸找到適合自己的節奏。</p>
                 </article>
+                <article>
+                    <h3>領導與協調</h3>
+                    <p>擔任風紀股長、副班長、康樂股長、FTC 隊長與營隊後勤組組長，讓我學會傳達資訊、整合事情、分配任務與處理突發狀況。</p>
+                </article>
+                <article>
+                    <h3>執行與視野</h3>
+                    <p>校園聖誕樹、世界廚房餅乾義賣、個人網站、機器人製作與國外旅遊經驗，讓我練習把想法落實，也用更開放的角度理解不同環境。</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="psd" class="psd-section">
+            <p class="section-kicker">Feng Chia PSD</p>
+            <h2 class="section-title">為什麼選擇逢甲大學精密系統設計學士學位學程？</h2>
+            <div class="story-layout">
+                <div class="story-copy">
+                    <p>我想申請逢甲大學精密系統設計學士學位學程，是因為這個學程不只學機械或製圖，也重視控制系統、軟體應用、資料分析與智慧製造，和我過去參與 FTC 機器人比賽的經驗有很高連結。</p>
+                    <p>工程不只是把零件組起來，更重要的是如何透過程式、判斷流程與控制邏輯，讓系統穩定完成任務。這正是我想繼續深入學習的方向。</p>
+                </div>
+                <div class="match-table" aria-label="我的經驗與逢甲 PSD 連結">
+                    <div><strong>FTC 機器人程式控制</strong><span>控制器設計、機器人導論</span></div>
+                    <div><strong>SolidWorks 機構設計</strong><span>精密系統設計、實作課程</span></div>
+                    <div><strong>C++、網站與 AI 學習</strong><span>軟體應用、資料分析</span></div>
+                    <div><strong>FPGA 與麵包板實作</strong><span>訊號處理、硬體控制</span></div>
+                    <div><strong>智慧製造興趣</strong><span>台積電智慧製造學分學程</span></div>
+                </div>
+            </div>
+            <div class="capability-row">
+                <article><h3>重視實作學習</h3><p>符合我透過 FTC 機器人做中學、測試、修正的方式。</p></article>
+                <article><h3>產學合作資源</h3><p>能提早理解半導體設備、智慧製造與自動化產業。</p></article>
+                <article><h3>軟體與設備整合</h3><p>符合我偏軟體，並希望把程式用在設備控制與資料分析上的方向。</p></article>
+            </div>
+        </section>
+
+        <section id="future" class="psd-section">
+            <p class="section-kicker">Future Plan</p>
+            <h2 class="section-title">未來規劃｜從設備控制走向智慧製造系統整合</h2>
+            <div class="timeline future-timeline">
+                <article>
+                    <span>近程</span>
+                    <h3>放榜到開學前</h3>
+                    <p>複習數學、向量、力學與電學，初步了解 C#、Python-Django、MySQL、MQTT 在設備監控與資料傳輸上的用途，並持續加強英文與產業新聞閱讀。</p>
+                </article>
+                <article>
+                    <span>中程</span>
+                    <h3>大一到大四</h3>
+                    <p>選擇自動化與軟體應用方向，優先修習程式語言、量測與訊號處理、控制器設計、機器人導論，並銜接智慧製造學分學程與專題實作。</p>
+                </article>
+                <article>
+                    <span>遠程</span>
+                    <h3>畢業後</h3>
+                    <p>以設備軟體工程師、智慧製造工程師或自動化軟體工程師為主要職涯方向，累積設備控制、資料監控、異常紀錄與系統整合能力。</p>
+                </article>
+            </div>
+            <div class="closing-panel">
+                <h2>從程式邏輯到智慧製造，我希望成為能用軟體解決實際工程問題的人。</h2>
+                <p>高中階段的學習讓我發現，自己不只是對程式有興趣，更希望把程式應用在真實設備與系統中。未來我希望在逢甲 PSD 持續累積控制系統、軟體應用、實驗分析與智慧製造能力。</p>
+                <div class="hero-actions">
+                    <button class="secondary-btn pdf-placeholder" type="button">完整 PDF 之後補上</button>
+                    <a class="primary-btn" href="#home">回到頂部</a>
+                </div>
             </div>
         </section>
 
@@ -280,7 +459,7 @@
 
     <footer>
         <div class="footer-content">
-            <p>© 2026 LiuKai 學習歷程網站。 熱情不斷推進，學習從不停歇。</p>
+            <p>© 2026 LiuKai 逢甲 PSD 申請個人網站。從程式邏輯到精密系統設計。</p>
         </div>
     </footer>
 
@@ -296,7 +475,7 @@
                 <input id="command-input" type="text" autocomplete="off" placeholder="輸入指令或區塊名稱">
                 <kbd>Ctrl K</kbd>
             </div>
-            <p class="command-palette__hint">試試：成果、技能、脈絡、gold。</p>
+            <p class="command-palette__hint">試試：STL、網站、FTC、生物、物理、AI、PSD、未來、gold。</p>
             <div class="command-palette__list" role="listbox" aria-label="可用指令"></div>
             <p class="command-palette__empty">找不到符合的指令。</p>
         </div>
