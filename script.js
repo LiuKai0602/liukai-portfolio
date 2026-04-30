@@ -652,66 +652,209 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const content = {
             base: {
-                label: '底盤',
-                title: '麥克納姆輪負責全向移動',
+                label: '底盤程式',
+                title: '用搖桿輸入控制麥克納姆輪全向移動',
                 points: [
-                    ['Problem', '遇到的問題', '得分策略需要快速接近 Sample、Basket 與角落得分區，移動方式必須穩定且容易操縱。'],
-                    ['Test', '測試方式', '以操縱手視角反覆測試路線、轉向、推動 Sample 與臨場補救。'],
-                    ['Fix', '修正方法', '使用 4 顆直流馬達驅動底盤，讓機器人具備較彈性的全向移動能力。'],
-                    ['Gain', '學到的能力', '把比賽策略轉成底盤控制方式，並保留現場調整空間。']
+                    ['Input', '讀取搖桿值', '用左搖桿的 Y 軸控制前後移動，左搖桿的 X 軸控制左右平移，右搖桿的 X 軸控制旋轉。'],
+                    ['Formula', '麥克納姆輪公式', '把前後、平移與旋轉三種動作混合，分別計算前右、前左、後右、後左四顆馬達的輸出值。'],
+                    ['Scale', '功率縮放', '當四顆馬達計算後的輸出超過最大功率時，使用 scaling_power 統一縮放，避免某顆馬達輸出超出範圍。'],
+                    ['Output', '輸出到四顆馬達', '最後把縮放後的數值輸出到 FR、FL、BR、BL 四顆馬達，讓底盤完成全向移動。']
+                ],
+                flow: [
+                    ['Input', '搖桿輸入', 'drive / turn / strafe'],
+                    ['Mix', '輪速混合', 'mecanum formula'],
+                    ['Scale', '功率縮放', 'avoid over power'],
+                    ['Output', '馬達輸出', 'FR / FL / BR / BL']
+                ],
+                codeTitle: 'Mecanum drive control',
+                code: [
+                    '// 讀取搖桿值',
+                    'drive  = -gamepad2.left_stick_y;   // 前後移動',
+                    'turn   =  gamepad2.right_stick_x;  // 旋轉',
+                    'strafe = -gamepad2.left_stick_x;   // 左右平移',
+                    '',
+                    '// 麥克納姆輪公式',
+                    'fr = drive - turn - strafe;',
+                    'fl = drive + turn + strafe;',
+                    'br = drive - turn + strafe;',
+                    'bl = drive + turn - strafe;',
+                    '',
+                    '// 計算縮放，避免超過最大功率',
+                    'scale = scaling_power(fr, fl, br, bl);',
+                    '',
+                    '// 輸出到底盤四顆馬達',
+                    'FR.setPower(fr / scale);',
+                    'FL.setPower(fl / scale);',
+                    'BR.setPower(br / scale);',
+                    'BL.setPower(bl / scale);'
                 ]
             },
             arm: {
-                label: '手臂',
-                title: '以目標位置變數解決重力下垂',
+                label: '手臂程式',
+                title: '以抽象變數解決重力問題',
                 points: [
-                    ['Problem', '遇到的問題', '手臂裝載夾子後過重，馬達轉到位置後仍會因重力掉落，無法穩定懸停。'],
-                    ['Test', '測試方式', '先嘗試按鈕控制馬達轉動秒數，再測試反向施力與不同角度設定。'],
-                    ['Fix', '解決方法', '改成設定 armTargetPosition 目標位置變數，讓控制系統依回傳資料自動微調校位，並加入轉動角度限制。'],
-                    ['Gain', '學到的能力', '用抽象變數處理真實機構問題，理解控制邏輯如何補足硬體限制。']
+                    ['Initial', '原本問題', '如果只用固定秒數控制手臂，馬達停止後容易因重力下墜，無法穩定停在指定高度。'],
+                    ['Control', '控制核心', '我改用 armTargetPosition 記錄目標位置，按鍵只負責調整目標值，再讓馬達用 RUN_TO_POSITION 持續校正。'],
+                    ['Safety', '安全與穩定', '加入最小與最大角度限制，並讓兩顆馬達同步套用同一個目標位置，避免超出安全範圍。']
+                ],
+                codeTitle: 'Arm target position control',
+                code: [
+                    '// 手臂位置範圍與目標位置',
+                    'final int ARM_MIN_POSITION = 0;',
+                    'final int ARM_MAX_POSITION = 500;',
+                    'int armTargetPosition = 0;',
+                    '',
+                    '// 按鍵調整目標位置',
+                    'if (gamepad1.right_bumper) armTargetPosition -= 1;',
+                    'else if (gamepad1.left_bumper) armTargetPosition += 1;',
+                    '',
+                    '// A 鍵平滑移動到固定位置',
+                    'if (gamepad1.a) {',
+                    '    armTargetPosition = moveToward(armTargetPosition, 280, 1.5);',
+                    '}',
+                    '',
+                    '// 限制安全範圍',
+                    'armTargetPosition = Math.max(ARM_MIN_POSITION, armTargetPosition);',
+                    'armTargetPosition = Math.min(ARM_MAX_POSITION, armTargetPosition);',
+                    '',
+                    '// 兩顆馬達同步跑到目標位置',
+                    'motor.setTargetPosition(armTargetPosition);',
+                    'motor2.setTargetPosition(armTargetPosition);',
+                    'motor.setPower(0.5);',
+                    'motor2.setPower(0.5);'
                 ]
             },
             claw: {
                 label: '夾子',
                 title: '從雙伺服改成齒輪聯動單伺服',
                 points: [
-                    ['Problem', '遇到的問題', '初代鋁製夾子過重，且 2 顆伺服馬達無法精準同步，導致 Sample 夾不緊。'],
-                    ['Test', '測試方式', '測試不同夾取角度、開合方式與材質重量對手臂負載的影響。'],
-                    ['Fix', '解決方法', '使用 SolidWorks 設計壓克力夾子減重，並以齒輪狀聯動讓 1 顆伺服馬達帶動兩側夾臂。'],
+                    ['Initial', '初代問題', '鋁製結構過重，兩顆伺服馬達無法同步，導致 Sample 夾不緊。'],
+                    ['Improve', '改良方式', '改用壓克力材質，使用 SolidWorks 設計切割，並利用齒輪狀連動縮減至一顆伺服馬達。'],
                     ['Gain', '學到的能力', '機構設計不能只看功能，也要考慮重量、同步性與馬達負載。']
-                ]
+                ],
+                iteration: {
+                    before: ['鋁製結構過重', '兩顆伺服馬達無法同步', 'Sample 夾不緊'],
+                    after: ['改用壓克力材質減輕重量', '使用 SolidWorks 設計切割', '利用齒輪狀連動縮減至一顆伺服馬達']
+                }
+            },
+            box: {
+                label: '載物盒',
+                title: '從鋁製結構改成塑膠盒單伺服投放',
+                points: [
+                    ['Initial', '初代問題', '初代載物盒使用純鋁構造，重量較高；同時以兩顆伺服馬達控制時，難以做到精準同步。'],
+                    ['Improve', '改良方式', '後來改用塑膠材質，使用文具店塑膠盒加工，並以一顆伺服馬達控制傾斜投放，讓結構更輕、控制也更單純。'],
+                    ['Gain', '學到的能力', '我理解到機構設計不一定要追求複雜，能降低重量、減少控制變數，反而更容易讓系統穩定運作。']
+                ],
+                iteration: {
+                    before: ['使用純鋁構造', '兩顆伺服馬達難以精準同步'],
+                    after: ['改用塑膠材質', '使用文具店塑膠盒加工', '以一顆伺服馬達控制傾斜投放']
+                }
             },
             rail: {
                 label: '滑軌',
-                title: '以連接件與位置控制完成升降',
+                title: '以壓克力連接件解決滑軌固定問題',
                 points: [
-                    ['Problem', '遇到的問題', '滑軌無法直接與旁邊底盤穩定組裝，升降時也需要左右馬達同步控制。'],
-                    ['Test', '測試方式', '測試滑軌與底盤連接方式，並用類似手臂的目標位置變數控制滑軌升降。'],
-                    ['Fix', '解決方法', '使用 SolidWorks 設計兩塊壓克力作為滑軌與底盤的銜接件，並讓馬達依目標位置自動校正。'],
-                    ['Gain', '學到的能力', '理解機構連接、馬達角度與程式控制必須一起設計。']
-                ]
+                    ['Initial', '問題', '滑軌無法直接與底盤組裝，結構銜接出現困難。'],
+                    ['Improve', '解法', '使用 SolidWorks 設計兩塊壓克力連接件，作為滑軌與底盤之間的固定結構。'],
+                    ['Gain', '學到的能力', '我理解到機構設計不只是在零件本身，也包含零件之間如何穩定連接。']
+                ],
+                exploded: {
+                    parts: [
+                        ['底盤', '原本的固定基準，但無法直接與滑軌穩定接合。'],
+                        ['壓克力連接件', '用 SolidWorks 設計兩片轉接結構，負責銜接底盤與滑軌。'],
+                        ['滑軌', '透過連接件固定後，能作為升降機構的主體。']
+                    ],
+                    result: '我把問題從「滑軌裝不上去」重新理解成「缺少中間固定結構」，因此用兩片壓克力連接件建立底盤與滑軌之間的穩定接口。'
+                }
             },
-            crisis: {
-                label: '賽場危機',
-                title: '滑軌故障後的硬體止血、軟體防護與策略重構',
-                isCrisis: true,
-                points: [
-                    ['Event', '事件', '比賽中途滑軌傳輸資料線損壞，單側馬達失去訊號，造成滑軌非對稱升起並結構變形。'],
-                    ['Hardware', '硬體止血', '在下一場比賽前強行拆除損壞滑軌組件，保留無法及時拆除的廢棄馬達以節省時間。'],
-                    ['Software', '軟體防護', '刪除滑軌操縱代碼避免誤觸空轉，但保留變數初始化，避免控制器因找不到變數而出錯。'],
-                    ['Strategy', '策略重構', '放棄高空 Basket，改用僅存手臂夾取 Sample，再由底盤化身推土機推入角落得分區。']
-                ]
-            }
         };
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
 
         function render(partKey) {
             const selected = content[partKey] || content.base;
+            const visiblePoints = selected.iteration
+                ? selected.points.filter(([label]) => label === 'Gain')
+                : selected.flow
+                    ? []
+                : selected.points;
             detail.classList.toggle('is-crisis', Boolean(selected.isCrisis));
+            detail.classList.toggle('has-code', Boolean(selected.code));
+            detail.classList.toggle('has-iteration', Boolean(selected.iteration));
+            detail.classList.toggle('has-exploded', Boolean(selected.exploded));
             detail.innerHTML = `
                 <p class="robot-detail__label">${selected.label}</p>
                 <h3>${selected.title}</h3>
-                <div class="detail-grid">
-                    ${selected.points.map(([label, heading, body]) => `
+                ${selected.flow ? `
+                    <div class="drive-flow" aria-label="底盤程式控制流程">
+                        ${selected.flow.map(([label, title, note], index) => `
+                            <article>
+                                <span>${escapeHtml(label)}</span>
+                                <strong>${escapeHtml(title)}</strong>
+                                <p>${escapeHtml(note)}</p>
+                            </article>
+                            ${index < selected.flow.length - 1 ? '<i aria-hidden="true"></i>' : ''}
+                        `).join('')}
+                    </div>
+                ` : ''}
+                ${selected.exploded ? `
+                    <div class="exploded-rail">
+                        <div class="exploded-rail__diagram" aria-label="滑軌連接件爆炸示意圖">
+                            ${selected.exploded.parts.map(([name, desc], index) => `
+                                <div class="rail-piece rail-piece--${index + 1}">
+                                    <span>${String(index + 1).padStart(2, '0')}</span>
+                                    <strong>${escapeHtml(name)}</strong>
+                                </div>
+                            `).join('')}
+                            <i class="rail-connector rail-connector--one" aria-hidden="true"></i>
+                            <i class="rail-connector rail-connector--two" aria-hidden="true"></i>
+                        </div>
+                        <div class="exploded-rail__notes">
+                            ${selected.exploded.parts.map(([name, desc]) => `
+                                <article>
+                                    <strong>${escapeHtml(name)}</strong>
+                                    <p>${escapeHtml(desc)}</p>
+                                </article>
+                            `).join('')}
+                        </div>
+                        <p class="exploded-rail__result">${escapeHtml(selected.exploded.result)}</p>
+                    </div>
+                ` : ''}
+                ${selected.iteration ? `
+                    <div class="diagnosis-panel">
+                        <div class="diagnosis-tabs" role="tablist" aria-label="工程修正流程">
+                            <button class="diagnosis-tab is-active" type="button" data-diagnosis="problem">問題</button>
+                            <button class="diagnosis-tab" type="button" data-diagnosis="fix">修正</button>
+                            <button class="diagnosis-tab" type="button" data-diagnosis="gain">收穫</button>
+                        </div>
+                        <div class="diagnosis-content">
+                            <div class="diagnosis-view is-active" data-diagnosis-view="problem">
+                                <span>01 / Problem</span>
+                                <h4>初代設計遇到的問題</h4>
+                                <ul>${selected.iteration.before.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
+                            </div>
+                            <div class="diagnosis-view" data-diagnosis-view="fix">
+                                <span>02 / Fix</span>
+                                <h4>改良後的設計方式</h4>
+                                <ul>${selected.iteration.after.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
+                            </div>
+                            <div class="diagnosis-view" data-diagnosis-view="gain">
+                                <span>03 / Result</span>
+                                <h4>${escapeHtml(visiblePoints[0]?.[1] || '學到的能力')}</h4>
+                                <p>${escapeHtml(visiblePoints[0]?.[2] || '')}</p>
+                            </div>
+                        </div>
+                    </div>
+                ` : ''}
+                <div class="detail-grid ${selected.iteration || selected.exploded ? 'is-hidden' : ''}">
+                    ${visiblePoints.map(([label, heading, body]) => `
                         <div class="detail-card">
                             <span>${label}</span>
                             <strong>${heading}</strong>
@@ -719,7 +862,30 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     `).join('')}
                 </div>
+                ${selected.code ? `
+                    <div class="robot-code-card">
+                        <div class="robot-code-card__bar">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <strong>${escapeHtml(selected.codeTitle || 'Control logic')}</strong>
+                        </div>
+                        <pre><code>${selected.code.map(escapeHtml).join('\n')}</code></pre>
+                    </div>
+                ` : ''}
             `;
+
+            const tabs = Array.from(detail.querySelectorAll('.diagnosis-tab'));
+            const views = Array.from(detail.querySelectorAll('.diagnosis-view'));
+            tabs.forEach((tab) => {
+                tab.addEventListener('click', () => {
+                    const target = tab.dataset.diagnosis;
+                    tabs.forEach((item) => item.classList.toggle('is-active', item === tab));
+                    views.forEach((view) => {
+                        view.classList.toggle('is-active', view.dataset.diagnosisView === target);
+                    });
+                });
+            });
         }
 
         controls.forEach((button) => {
@@ -728,6 +894,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 render(button.dataset.robotPart);
             });
         });
+
+        const activeControl = controls.find((button) => button.classList.contains('is-active')) || controls[0];
+        render(activeControl.dataset.robotPart);
     }
 
     function initPdfPlaceholder() {
@@ -782,6 +951,8 @@ document.addEventListener('DOMContentLoaded', () => {
             robotics: [
                 '.section-kicker',
                 '.section-title',
+                '.robot-hero',
+                '.robot-flow',
                 '.robot-copy',
                 '.robot-system'
             ],

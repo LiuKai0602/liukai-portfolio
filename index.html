@@ -188,10 +188,42 @@
 
         <section id="robotics" class="psd-section">
             <p class="section-kicker">Robotics</p>
-            <h2 class="section-title">FTC 機器人大賽｜從策略、設計到控制</h2>
-            <div class="robot-layout">
+            <h2 class="section-title">FTC 機器人選拔賽：從邏輯建構到危機處理</h2>
+            <div class="robot-hero">
+                <p>以隊長與程式組長身份，從比賽規則分析、機器人設計、程式控制到賽場危機處理，完成一次完整的工程實作經驗。</p>
+                <div class="tech-tags" aria-label="FTC 關鍵能力標籤">
+                    <span>邏輯與推演</span>
+                    <span>軟硬體整合</span>
+                    <span>壓力決策</span>
+                    <span>團隊合作</span>
+                </div>
+            </div>
+            <div class="robot-flow">
+                <div class="robot-flow__intro">
+                    <p class="robot-detail__label">Design Flow</p>
+                    <h3>從紙本構思到機器人設計</h3>
+                    <p>一開始我們先從比賽任務拆解出機器人需要完成的動作，再依照得分目標逐步確認機構需求。</p>
+                </div>
+                <div class="action-chain" aria-label="機器人得分動作拆解">
+                    <span>移動到 sample 旁</span>
+                    <span>夾子夾取 sample</span>
+                    <span>手臂移到載物盒上方</span>
+                    <span>sample 放入載物盒</span>
+                    <span>滑軌升到 basket 高度</span>
+                    <span>載物盒傾斜得分</span>
+                </div>
+                <div class="flow-steps" aria-label="機器人設計流程">
+                    <article><span>01</span><h4>設定得分目標</h4><p>先確認主要得分方式，讓後續設計集中在穩定完成任務。</p></article>
+                    <article><span>02</span><h4>拆解機器人動作</h4><p>把得分流程拆成移動、夾取、轉移、升高與投放。</p></article>
+                    <article><span>03</span><h4>設計底盤、手臂、夾子</h4><p>先完成能移動與夾取 sample 的核心結構。</p></article>
+                    <article><span>04</span><h4>測試高度限制</h4><p>測試手臂是否能直接到達 basket 高度。</p></article>
+                    <article><span>05</span><h4>增加載物盒與滑軌</h4><p>發現高度不足後，加入暫存與升降機構補足限制。</p></article>
+                    <article><span>06</span><h4>完成整體配置</h4><p>整合底盤、手臂、夾子、載物盒與滑軌，形成完整得分系統。</p></article>
+                </div>
+            </div>
+            <div class="robot-layout robot-layout--summary">
                 <div class="robot-copy">
-                    <p>我在 2024-2025 FIRST 機器人大賽臺灣選拔賽 FTC 項目中擔任隊長、程式組長與比賽操縱手。這份成果的主軸不是單純參賽，而是從比賽規則分析、得分策略、機器人設計、程式控制到賽場危機處理，完整經歷一次工程系統從構想到實作的過程。</p>
+                    <p>我在 2024-2025 FIRST 機器人大賽臺灣選拔賽 FTC 項目中擔任隊長、程式組長與比賽操縱手。這份成果的主軸不是單純參賽，而是把腦中的設計想法落實成能在賽場運作的機器人系統。</p>
                     <p>我們最後把設計原則收斂成「系統穩定度」與「單場最高得分效率」。相較於高風險、耗時且容易卡住的掛鉤得分，我們選擇以夾取 Sample、放入載物盒、滑軌上升後投入 Basket 作為核心得分策略。</p>
                     <ul class="clean-list">
                         <li>角色：隊長、程式組長、比賽操縱手</li>
@@ -204,7 +236,16 @@
                         <p><strong>設計迭代</strong> 夾子、手臂與滑軌都不是一次完成，而是從測試中找出限制，再用材質、機構與程式控制逐步修正。</p>
                     </div>
                 </div>
-                <div class="robot-system" aria-label="互動式機器人系統圖">
+            </div>
+
+            <div class="robot-part-page">
+                <div class="robot-part-page__header">
+                    <p class="robot-detail__label">Component System</p>
+                    <h3>機器人部件介紹</h3>
+                    <p>這一頁把機器人拆成底盤、手臂、夾子、滑軌與賽場危機五個部分，點選右上角按鈕後，可以快速查看每個部件遇到的問題、測試方式與修正方法。</p>
+                </div>
+
+                <div class="robot-system robot-system--showcase" aria-label="互動式機器人系統圖">
                     <div class="robot-visual" aria-hidden="true">
                         <div class="system-core">
                             <span>FTC</span>
@@ -219,23 +260,82 @@
                         <div class="system-node system-node--claw"><i class="fas fa-gear" aria-hidden="true"></i><span>夾子</span></div>
                         <div class="system-node system-node--rail"><i class="fas fa-arrow-up-long" aria-hidden="true"></i><span>滑軌</span></div>
                     </div>
-                    <div class="robot-controls">
-                        <button class="robot-part is-active" type="button" data-robot-part="base">底盤</button>
-                        <button class="robot-part" type="button" data-robot-part="arm">手臂</button>
-                        <button class="robot-part" type="button" data-robot-part="claw">夾子</button>
-                        <button class="robot-part" type="button" data-robot-part="rail">滑軌</button>
-                        <button class="robot-part robot-part--alert" type="button" data-robot-part="crisis">危機處理</button>
-                    </div>
-                    <article class="robot-detail" aria-live="polite">
-                        <p class="robot-detail__label">底盤</p>
-                        <h3>麥克納姆輪負責全向移動</h3>
-                        <div class="detail-grid">
-                            <div class="detail-card"><span>Problem</span><strong>遇到的問題</strong><p>得分策略需要快速接近 Sample 與角落得分區。</p></div>
-                            <div class="detail-card"><span>Test</span><strong>測試方式</strong><p>以操縱手視角反覆測試路線、轉向與推動 Sample 的穩定度。</p></div>
-                            <div class="detail-card"><span>Fix</span><strong>修正方法</strong><p>以 4 顆直流馬達驅動底盤，讓移動、轉向與臨場補救更彈性。</p></div>
-                            <div class="detail-card"><span>Gain</span><strong>學到的能力</strong><p>把策略轉成機器人移動方式，並保留現場調整空間。</p></div>
+
+                    <div class="robot-info-panel">
+                        <div class="robot-controls" aria-label="選擇機器人部件">
+                            <button class="robot-part is-active" type="button" data-robot-part="base">底盤</button>
+                            <button class="robot-part" type="button" data-robot-part="arm">手臂</button>
+                            <button class="robot-part" type="button" data-robot-part="claw">夾子</button>
+                            <button class="robot-part" type="button" data-robot-part="box">載物盒</button>
+                            <button class="robot-part" type="button" data-robot-part="rail">滑軌</button>
                         </div>
-                    </article>
+                        <article class="robot-detail" aria-live="polite">
+                            <p class="robot-detail__label">底盤</p>
+                            <h3>麥克納姆輪負責全向移動</h3>
+                            <div class="detail-grid">
+                                <div class="detail-card"><span>Problem</span><strong>遇到的問題</strong><p>得分策略需要快速接近 Sample 與角落得分區。</p></div>
+                                <div class="detail-card"><span>Test</span><strong>測試方式</strong><p>以操縱手視角反覆測試路線、轉向與推動 Sample 的穩定度。</p></div>
+                                <div class="detail-card"><span>Fix</span><strong>修正方法</strong><p>以 4 顆直流馬達驅動底盤，讓移動、轉向與臨場補救更彈性。</p></div>
+                                <div class="detail-card"><span>Gain</span><strong>學到的能力</strong><p>把策略轉成機器人移動方式，並保留現場調整空間。</p></div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+
+            <div class="robot-crisis-section">
+                <div class="robot-crisis-section__heading">
+                    <p class="robot-detail__label">Field Response</p>
+                    <h3>賽場危機處理：在故障中重新完成任務</h3>
+                    <p>這段經驗不屬於單一部件，而是比賽現場的即時判斷。滑軌故障後，我必須同時處理硬體、程式與策略，讓機器人能在下一場比賽繼續上場。</p>
+                </div>
+                <div class="crisis-dashboard">
+                    <div class="crisis-timeline" aria-label="賽場危機時間線">
+                        <article>
+                            <span>T+0</span>
+                            <strong>滑軌資料線損壞</strong>
+                            <p>單側馬達失去訊號，滑軌開始非對稱升起。</p>
+                        </article>
+                        <article>
+                            <span>T+30s</span>
+                            <strong>確認結構變形</strong>
+                            <p>判斷滑軌已無法安全完成高空 Basket 得分。</p>
+                        </article>
+                        <article>
+                            <span>Next Match</span>
+                            <strong>進入搶修決策</strong>
+                            <p>時間有限，必須同時處理硬體、程式與策略。</p>
+                        </article>
+                    </div>
+
+                    <div class="crisis-console" aria-label="危機狀態面板">
+                        <div class="console-screen">
+                            <p>System Diagnosis</p>
+                            <div><span>Rail Status</span><strong class="is-danger">Failed</strong></div>
+                            <div><span>Drive Status</span><strong class="is-active">Active</strong></div>
+                            <div><span>Arm Status</span><strong class="is-active">Usable</strong></div>
+                            <div><span>Strategy</span><strong class="is-blue">Corner Zone</strong></div>
+                        </div>
+                        <p class="console-note">核心判斷：放棄已失效的滑軌得分方式，保留仍可用的底盤與手臂，重新建立能上場的最低可行策略。</p>
+                    </div>
+
+                    <div class="crisis-actions" aria-label="危機處理模組">
+                        <article>
+                            <span>01</span>
+                            <strong>硬體止血</strong>
+                            <p>拆除損壞滑軌組件，保留無法及時拆除的廢棄馬達，避免結構繼續干擾。</p>
+                        </article>
+                        <article>
+                            <span>02</span>
+                            <strong>軟體防護</strong>
+                            <p>刪除滑軌操縱代碼避免誤觸，但保留變數初始化，避免控制器出錯。</p>
+                        </article>
+                        <article>
+                            <span>03</span>
+                            <strong>策略重構</strong>
+                            <p>放棄高空 Basket，改用手臂夾取 Sample，再由底盤推入角落得分區。</p>
+                        </article>
+                    </div>
                 </div>
             </div>
         </section>
