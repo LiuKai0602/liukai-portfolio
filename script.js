@@ -305,9 +305,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 ctx.beginPath();
-                ctx.fillStyle = `rgba(246, 223, 170, ${0.16 + particle.glow * 0.24})`;
-                ctx.shadowColor = 'rgba(216, 180, 106, 0.5)';
-                ctx.shadowBlur = 10;
+                    ctx.fillStyle = `rgba(246, 223, 170, ${0.22 + particle.glow * 0.3})`;
+                    ctx.shadowColor = 'rgba(216, 180, 106, 0.62)';
+                    ctx.shadowBlur = 12;
                 ctx.arc(particle.x, particle.y, particle.r, 0, Math.PI * 2);
                 ctx.fill();
                 ctx.shadowBlur = 0;
@@ -317,11 +317,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     const dx = particle.x - next.x;
                     const dy = particle.y - next.y;
                     const distance = Math.hypot(dx, dy);
-                    if (distance > 115) continue;
+                    if (distance > 135) continue;
 
                     ctx.beginPath();
-                    ctx.strokeStyle = `rgba(216, 180, 106, ${0.11 * (1 - distance / 115)})`;
-                    ctx.lineWidth = 1;
+                    ctx.strokeStyle = `rgba(216, 180, 106, ${0.22 * (1 - distance / 135)})`;
+                    ctx.lineWidth = 1.15;
                     ctx.moveTo(particle.x, particle.y);
                     ctx.lineTo(next.x, next.y);
                     ctx.stroke();
