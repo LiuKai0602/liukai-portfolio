@@ -383,7 +383,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             {
                 title: '前往關於我',
-                desc: '閱讀自我介紹與申請主軸',
+                desc: '閱讀自我介紹與學習方向',
                 icon: 'fa-user',
                 keys: 'A',
                 keywords: 'about profile intro 關於我 自我介紹',
@@ -444,33 +444,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 keys: 'AI',
                 keywords: 'ai teachable machine lego model training 人工智慧 訓練',
                 action: () => goToSection('#ai-training')
-            },
-            {
-                title: '前往逢甲 PSD',
-                desc: '查看我的經驗與精密系統設計學程的連結',
-                icon: 'fa-diagram-project',
-                keys: 'PSD',
-                keywords: 'feng chia psd 逢甲 精密系統',
-                action: () => goToSection('#psd')
-            },
-            {
-                title: '前往未來規劃',
-                desc: '查看大學學習與職涯方向',
-                icon: 'fa-route',
-                keys: 'F',
-                keywords: 'future plan career 未來 規劃',
-                action: () => goToSection('#future')
-            },
-            {
-                title: '\u5207\u63db\u4e3b\u984c',
-                desc: '\u5207\u63db\u6df1\u8272\u6216\u6dfa\u8272\u6a21\u5f0f',
-                icon: 'fa-circle-half-stroke',
-                keys: 'T',
-                keywords: 'theme light dark mode switch \u4e3b\u984c',
-                action: () => {
-                    closePalette();
-                    document.querySelector('.theme-toggle')?.click();
-                }
             },
             {
                 title: '\u89f8\u767c GOLD \u5f69\u86cb',
@@ -989,19 +962,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 '.section-kicker',
                 '.section-title',
                 '.growth-grid article'
-            ],
-            psd: [
-                '.section-kicker',
-                '.section-title',
-                '.story-copy',
-                '.match-table div',
-                '.capability-row article'
-            ],
-            future: [
-                '.section-kicker',
-                '.section-title',
-                '.timeline article',
-                '.closing-panel'
             ]
         };
 
@@ -1151,36 +1111,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Theme preference is persisted so reloads keep the same dark/light choice.
-    function initThemeToggle() {
-        const button = document.querySelector('.theme-toggle');
-        if (!button) return;
-
-        const icon = button.querySelector('i');
-        const storageKey = 'portfolio_theme';
-
-        function applyTheme(theme) {
-            const isLight = theme === 'light';
-            document.body.classList.toggle('theme-light', isLight);
-
-            if (icon) {
-                icon.className = isLight ? 'fas fa-sun' : 'fas fa-moon';
-            }
-        }
-
-        const saved = localStorage.getItem(storageKey);
-        if (saved === 'light' || saved === 'dark') {
-            applyTheme(saved);
-        }
-
-        button.addEventListener('click', () => {
-            const nextTheme = document.body.classList.contains('theme-light') ? 'dark' : 'light';
-            localStorage.setItem(storageKey, nextTheme);
-            applyTheme(nextTheme);
-            showToast(nextTheme === 'light' ? '\u6dfa\u8272\u6a21\u5f0f\u5df2\u555f\u7528' : '\u6df1\u8272\u6a21\u5f0f\u5df2\u555f\u7528');
-        });
-    }
-
     function initScrollIndicator() {
         const indicator = document.querySelector('.scroll-indicator');
         const nextSection = document.querySelector('#about');
@@ -1207,6 +1137,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothAnchorScroll();
     initActiveNav();
     initBackToTop();
-    initThemeToggle();
     initScrollIndicator();
 });

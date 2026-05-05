@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LiuKai | 逢甲 PSD 申請個人網站</title>
+    <title>LiuKai | 學習歷程個人網站</title>
     <meta
         name="description"
-        content="劉力愷的逢甲大學精密系統設計學士學位學程申請個人網站，以程式邏輯、FTC 機器人、科學探究與未來規劃呈現申請動機。"
+        content="劉力愷的高中學習歷程個人網站，以程式邏輯、FTC 機器人、科學探究與多元表現整理學習成果。"
     >
     <link rel="stylesheet" href="style.css">
     <link
@@ -23,17 +23,17 @@
     <header class="site-header">
         <nav class="site-nav" aria-label="主要導覽">
             <a class="brand" href="#home" aria-label="回到首頁">LiuKai</a>
-            <button class="theme-toggle" type="button" aria-label="切換主題" title="切換主題">
-                <i class="fas fa-moon" aria-hidden="true"></i>
-            </button>
             <ul>
                 <li><a href="#home">首頁</a></li>
                 <li><a href="#about">關於我</a></li>
-                <li><a href="#cpp-stl">程式與AI</a></li>
+                <li><a href="#cpp-stl">C++ STL</a></li>
+                <li><a href="#programming">網站</a></li>
                 <li><a href="#robotics">機器人</a></li>
-                <li><a href="#biology">自然探究</a></li>
-                <li><a href="#psd">逢甲 PSD</a></li>
-                <li><a href="#future">未來規劃</a></li>
+                <li><a href="#biology">生物探究</a></li>
+                <li><a href="#physics">物理探究</a></li>
+                <li><a href="#experiment">電資營</a></li>
+                <li><a href="#ai-training">AI 訓練</a></li>
+                <li><a href="#experience">整合表現</a></li>
             </ul>
         </nav>
     </header>
@@ -45,22 +45,22 @@
                     <p class="eyebrow">Student Profile</p>
                     <h1 class="glitch-effect">劉力愷｜熱情不斷推進，學習從不停歇</h1>
                     <p class="hero-lead">
-                        我是嘉義縣私立協同高級中學學生，個人特質是獨立負責、系統思維、熱於學習與探究實踐。高中期間，我持續投入程式設計、網頁設計、機器人、AI 與自然探究，也在團隊實作中累積領導、溝通與解決問題的經驗。
+                        我是嘉義縣私立協同高級中學學生，個人特質是獨立負責、系統思維、熱於學習與探究實踐。高中期間，我持續投入網頁製作、機器人、AI 與自然探究，也在實作過程中累積把想法轉成成果的經驗。
                     </p>
                     <p class="typing-text">團隊領導 | 程式設計 | 邏輯分析 | 人際溝通</p>
                     <div class="hero-actions">
                         <a class="primary-btn" href="#about">先認識我</a>
-                        <a class="secondary-btn" href="#psd">看申請主軸</a>
+                        <a class="secondary-btn" href="#cpp-stl">看學習成果</a>
                     </div>
                     <div class="hero-signals" aria-label="展覽導覽">
                         <div class="hero-signal">
                             <span>Personal Strength</span>
                             <strong>專長能力</strong>
                             <ul>
-                                <li>團隊領導</li>
-                                <li>程式設計</li>
-                                <li>邏輯分析</li>
-                                <li>人際溝通</li>
+                                <li>任務拆解</li>
+                                <li>實作修正</li>
+                                <li>資料整理</li>
+                                <li>成果表達</li>
                             </ul>
                         </div>
                         <div class="hero-signal">
@@ -101,14 +101,11 @@
 
         <section id="about" class="psd-section">
             <p class="section-kicker">About Me</p>
-            <h2 class="section-title">從程式邏輯出發，讓系統穩定運作</h2>
+            <h2 class="section-title">把知識放進實作裡，讓想法真正運作</h2>
             <div class="story-layout">
                 <div class="story-copy">
                     <p>
-                        我不只想把高中做過的成果排成清單，而是想呈現自己如何從課程學習、程式練習、團隊實作與自然探究中，逐漸找到「軟體如何控制真實設備」這個方向。
-                    </p>
-                    <p>
-                        在 FTC 機器人競賽中，我開始接觸馬達控制、機構設計與程式邏輯。當程式真的影響機器人的移動、夾取與升降時，我更確定自己想把程式能力延伸到設備控制、資料監控與智慧製造系統。
+                        我喜歡把知識運用在實作中，不只停留在課本或程式畫面。從機器人、網頁到自然探究，我逐漸發現自己想用程式控制真實設備，並把想法做成能運作的成果。
                     </p>
                 </div>
                 <div class="metric-strip" aria-label="個人能力摘要">
@@ -194,7 +191,7 @@
                 </article>
             </div>
             <div class="capability-row">
-                <article><h3>內容整理</h3><p>把不同成果重新分類，讓每個作品都能對應到能力與申請動機。</p></article>
+                <article><h3>內容整理</h3><p>把不同成果重新分類，讓每個作品都能對應到能力與學習脈絡。</p></article>
                 <article><h3>互動表達</h3><p>用動畫、指令面板與互動區塊，讓網站更像一份可閱讀的學習歷程。</p></article>
                 <article><h3>測試修正</h3><p>持續檢查版面、文字長度與手機顯示，讓成果更穩定呈現。</p></article>
             </div>
@@ -303,27 +300,27 @@
                     <h3>賽場危機處理：在故障中重新完成任務</h3>
                     <p>這段經驗不屬於單一部件，而是比賽現場的即時判斷。滑軌故障後，我必須同時處理硬體、程式與策略，讓機器人能在下一場比賽繼續上場。</p>
                 </div>
-                <div class="crisis-dashboard">
-                    <div class="crisis-timeline" aria-label="賽場危機時間線">
-                        <article>
+                <div class="crisis-dashboard crisis-dashboard--open">
+                    <div class="crisis-timeline crisis-timeline--open" aria-label="賽場危機時間線">
+                        <div>
                             <span>T+0</span>
                             <strong>滑軌資料線損壞</strong>
                             <p>單側馬達失去訊號，滑軌開始非對稱升起。</p>
-                        </article>
-                        <article>
+                        </div>
+                        <div>
                             <span>T+30s</span>
                             <strong>確認結構變形</strong>
                             <p>判斷滑軌已無法安全完成高空 Basket 得分。</p>
-                        </article>
-                        <article>
+                        </div>
+                        <div>
                             <span>Next Match</span>
                             <strong>進入搶修決策</strong>
                             <p>時間有限，必須同時處理硬體、程式與策略。</p>
-                        </article>
+                        </div>
                     </div>
 
                     <div class="crisis-console" aria-label="危機狀態面板">
-                        <div class="console-screen">
+                        <div class="console-screen console-screen--open">
                             <p>System Diagnosis</p>
                             <div><span>Rail Status</span><strong class="is-danger">Failed</strong></div>
                             <div><span>Drive Status</span><strong class="is-active">Active</strong></div>
@@ -333,22 +330,22 @@
                         <p class="console-note">核心判斷：放棄已失效的滑軌得分方式，保留仍可用的底盤與手臂，重新建立能上場的最低可行策略。</p>
                     </div>
 
-                    <div class="crisis-actions" aria-label="危機處理模組">
-                        <article>
+                    <div class="crisis-actions crisis-actions--open" aria-label="危機處理模組">
+                        <div>
                             <span>01</span>
                             <strong>硬體止血</strong>
                             <p>拆除損壞滑軌組件，保留無法及時拆除的廢棄馬達，避免結構繼續干擾。</p>
-                        </article>
-                        <article>
+                        </div>
+                        <div>
                             <span>02</span>
                             <strong>軟體防護</strong>
                             <p>刪除滑軌操縱代碼避免誤觸，但保留變數初始化，避免控制器出錯。</p>
-                        </article>
-                        <article>
+                        </div>
+                        <div>
                             <span>03</span>
                             <strong>策略重構</strong>
                             <p>放棄高空 Basket，改用手臂夾取 Sample，再由底盤推入角落得分區。</p>
-                        </article>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -403,6 +400,11 @@
                 <div class="story-copy">
                     <p>物理自然探究與實作讓我更直接面對「做出來」和「想像中」的差距。課程中包含溶液加熱實驗、鋁罐平衡實驗與吹泡泡實驗，實驗主題之外，許多設計、操作與修正都需要自己觀察後決定。</p>
                     <p>這段經驗讓我理解，物理探究不是只套公式，而是從現象出發，透過測試、紀錄與修正，找出影響結果的原因。</p>
+                    <div class="feature-list">
+                        <p><strong>從現象開始</strong> 先觀察實驗中出現的變化，再思考背後可能影響結果的因素。</p>
+                        <p><strong>控制條件</strong> 透過固定部分條件、改變單一變因，讓實驗結果更容易被比較。</p>
+                        <p><strong>回頭修正</strong> 當結果和預期不同時，重新檢查操作、紀錄與假設，找出可以改善的地方。</p>
+                    </div>
                 </div>
                 <div class="metric-strip">
                     <div><span>01</span><strong>溶液加熱</strong><p>觀察加熱過程與變化，練習控制條件與紀錄結果。</p></div>
@@ -420,19 +422,39 @@
         <section id="experiment" class="psd-section">
             <p class="section-kicker">Hardware Practice</p>
             <h2 class="section-title">中興大學電資營｜從程式邏輯到硬體輸出</h2>
-            <div class="timeline">
-                <article>
-                    <span>01</span>
-                    <h3>FPGA 與 Verilog</h3>
-                    <p>透過 Verilog 控制 EGO1 FPGA 開發板上的七段顯示器，並完成計算機與貪吃蛇小遊戲。</p>
-                    <div class="tech-tags"><span>Verilog</span><span>FPGA</span><span>七段顯示器</span></div>
-                </article>
-                <article>
-                    <span>02</span>
-                    <h3>麵包板電路實作</h3>
-                    <p>在接線與元件配置中，我學到訊號傳遞與硬體位置都會影響最後結果，也訓練自己用系統化方式拆解問題。</p>
-                    <div class="tech-tags"><span>麵包板電路</span><span>訊號輸入</span><span>邏輯判斷</span><span>輸出控制</span></div>
-                </article>
+            <div class="hardware-showcase">
+                <div class="hardware-visual" aria-label="FPGA 與麵包板硬體輸出示意">
+                    <div class="board-card">
+                        <span class="board-chip">EGO1</span>
+                        <span class="board-port board-port--one"></span>
+                        <span class="board-port board-port--two"></span>
+                        <span class="board-signal board-signal--one"></span>
+                        <span class="board-signal board-signal--two"></span>
+                        <strong>FPGA</strong>
+                    </div>
+                    <div class="signal-arrow" aria-hidden="true">→</div>
+                    <div class="display-card">
+                        <span class="segment segment--top"></span>
+                        <span class="segment segment--middle"></span>
+                        <span class="segment segment--bottom"></span>
+                        <span class="segment segment--left"></span>
+                        <span class="segment segment--right"></span>
+                        <strong>OUTPUT</strong>
+                    </div>
+                </div>
+                <div class="hardware-steps">
+                    <article>
+                        <span>01 / Code to Board</span>
+                        <h3>FPGA 與 Verilog</h3>
+                        <p>透過 Verilog 撰寫控制邏輯，讓 EGO1 FPGA 開發板上的七段顯示器依照輸入產生輸出，並完成計算機與貪吃蛇小遊戲。</p>
+                    </article>
+                    <article>
+                        <span>02 / Circuit to Signal</span>
+                        <h3>麵包板電路實作</h3>
+                        <p>在接線與元件配置中，我學到訊號傳遞、接點位置與硬體排列都會影響結果，因此需要用更系統化的方式檢查問題。</p>
+                    </article>
+                    <div class="tech-tags"><span>Verilog</span><span>FPGA</span><span>七段顯示器</span><span>麵包板電路</span><span>訊號輸入</span><span>邏輯判斷</span><span>輸出控制</span></div>
+                </div>
             </div>
         </section>
 
@@ -498,74 +520,21 @@
 
         <section id="experience" class="psd-section">
             <p class="section-kicker">Leadership & Growth</p>
-            <h2 class="section-title">多元表現｜在團隊中承擔責任，讓合作成為完成目標的力量</h2>
+            <h2 class="section-title">我的整合能力｜把人、任務與技術串在一起</h2>
             <div class="growth-grid">
                 <article>
-                    <h3>學習修正</h3>
-                    <p><strong>數學：</strong>從模擬考 2 級分開始，我重新補基礎、整理常錯題，學會找出問題核心再循序處理。</p>
-                    <p><strong>英文：</strong>從只背單字，改成大量閱讀、先看題目再回到文章找重點，逐漸找到適合自己的節奏。</p>
+                    <h3>從不同角色累積整合經驗</h3>
+                    <p>高中期間，我曾擔任風紀股長、副班長、康樂股長，也在 FTC 機器人團隊中擔任隊長、程式組長與比賽操縱手。這些角色讓我不只練習完成自己的工作，也學會把人、任務、時間與技術需求整合起來。</p>
                 </article>
                 <article>
-                    <h3>領導與協調</h3>
-                    <p>擔任風紀股長、副班長、康樂股長、FTC 隊長與營隊後勤組組長，讓我學會傳達資訊、整合事情、分配任務與處理突發狀況。</p>
+                    <h3>我整合的四個面向</h3>
+                    <ul class="clean-list">
+                        <li><strong>溝通協調：</strong>在班級幹部與 FTC 團隊中，協助傳達資訊、整理需求，讓不同成員知道自己該完成的任務。</li>
+                        <li><strong>任務拆解：</strong>面對活動或機器人製作時，先把目標拆成可以執行的步驟，再安排順序與分工。</li>
+                        <li><strong>技術整合：</strong>作為程式組長，我需要讓程式邏輯配合機構設計，使馬達、夾爪、滑軌與操控流程能穩定運作。</li>
+                        <li><strong>臨場判斷：</strong>比賽或活動中遇到突發狀況時，練習快速判斷優先順序，先穩住問題再修正細節。</li>
+                    </ul>
                 </article>
-                <article>
-                    <h3>執行與視野</h3>
-                    <p>校園聖誕樹、世界廚房餅乾義賣、個人網站、機器人製作與國外旅遊經驗，讓我練習把想法落實，也用更開放的角度理解不同環境。</p>
-                </article>
-            </div>
-        </section>
-
-        <section id="psd" class="psd-section">
-            <p class="section-kicker">Feng Chia PSD</p>
-            <h2 class="section-title">為什麼選擇逢甲大學精密系統設計學士學位學程？</h2>
-            <div class="story-layout">
-                <div class="story-copy">
-                    <p>我想申請逢甲大學精密系統設計學士學位學程，是因為這個學程不只學機械或製圖，也重視控制系統、軟體應用、資料分析與智慧製造，和我過去參與 FTC 機器人比賽的經驗有很高連結。</p>
-                    <p>工程不只是把零件組起來，更重要的是如何透過程式、判斷流程與控制邏輯，讓系統穩定完成任務。這正是我想繼續深入學習的方向。</p>
-                </div>
-                <div class="match-table" aria-label="我的經驗與逢甲 PSD 連結">
-                    <div><strong>FTC 機器人程式控制</strong><span>控制器設計、機器人導論</span></div>
-                    <div><strong>SolidWorks 機構設計</strong><span>精密系統設計、實作課程</span></div>
-                    <div><strong>C++、網站與 AI 學習</strong><span>軟體應用、資料分析</span></div>
-                    <div><strong>FPGA 與麵包板實作</strong><span>訊號處理、硬體控制</span></div>
-                    <div><strong>智慧製造興趣</strong><span>台積電智慧製造學分學程</span></div>
-                </div>
-            </div>
-            <div class="capability-row">
-                <article><h3>重視實作學習</h3><p>符合我透過 FTC 機器人做中學、測試、修正的方式。</p></article>
-                <article><h3>產學合作資源</h3><p>能提早理解半導體設備、智慧製造與自動化產業。</p></article>
-                <article><h3>軟體與設備整合</h3><p>符合我偏軟體，並希望把程式用在設備控制與資料分析上的方向。</p></article>
-            </div>
-        </section>
-
-        <section id="future" class="psd-section">
-            <p class="section-kicker">Future Plan</p>
-            <h2 class="section-title">未來規劃｜從設備控制走向智慧製造系統整合</h2>
-            <div class="timeline future-timeline">
-                <article>
-                    <span>近程</span>
-                    <h3>放榜到開學前</h3>
-                    <p>複習數學、向量、力學與電學，初步了解 C#、Python-Django、MySQL、MQTT 在設備監控與資料傳輸上的用途，並持續加強英文與產業新聞閱讀。</p>
-                </article>
-                <article>
-                    <span>中程</span>
-                    <h3>大一到大四</h3>
-                    <p>選擇自動化與軟體應用方向，優先修習程式語言、量測與訊號處理、控制器設計、機器人導論，並銜接智慧製造學分學程與專題實作。</p>
-                </article>
-                <article>
-                    <span>遠程</span>
-                    <h3>畢業後</h3>
-                    <p>以設備軟體工程師、智慧製造工程師或自動化軟體工程師為主要職涯方向，累積設備控制、資料監控、異常紀錄與系統整合能力。</p>
-                </article>
-            </div>
-            <div class="closing-panel">
-                <h2>從程式邏輯到智慧製造，我希望成為能用軟體解決實際工程問題的人。</h2>
-                <p>高中階段的學習讓我發現，自己不只是對程式有興趣，更希望把程式應用在真實設備與系統中。未來我希望在逢甲 PSD 持續累積控制系統、軟體應用、實驗分析與智慧製造能力。</p>
-                <div class="hero-actions">
-                    <button class="secondary-btn pdf-placeholder" type="button">完整 PDF 之後補上</button>
-                    <a class="primary-btn" href="#home">回到頂部</a>
-                </div>
             </div>
         </section>
 
@@ -573,7 +542,7 @@
 
     <footer>
         <div class="footer-content">
-            <p>© 2026 LiuKai 逢甲 PSD 申請個人網站。從程式邏輯到精密系統設計。</p>
+            <p>© 2026 LiuKai 學習歷程個人網站。把知識放進實作裡，讓想法真正運作。</p>
         </div>
     </footer>
 
@@ -589,7 +558,7 @@
                 <input id="command-input" type="text" autocomplete="off" placeholder="輸入指令或區塊名稱">
                 <kbd>Ctrl K</kbd>
             </div>
-            <p class="command-palette__hint">試試：STL、網站、FTC、生物、物理、AI、PSD、未來、gold。</p>
+            <p class="command-palette__hint">試試：STL、網站、FTC、生物、物理、AI、成果、gold。</p>
             <div class="command-palette__list" role="listbox" aria-label="可用指令"></div>
             <p class="command-palette__empty">找不到符合的指令。</p>
         </div>
@@ -601,5 +570,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-
