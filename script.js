@@ -107,12 +107,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Cards expose their tilt and shine angle through CSS variables so the
     // visual math stays in JS while the rendering stays in CSS.
     function initProjectTilt() {
-        const supportsFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-        if (!supportsFinePointer) return;
+        const tiltTargets = [
+            '.capability-row article',
+            '.ai-process article',
+            '.flow-steps article',
+            '.hardware-steps article'
+        ];
+        const cards = Array.from(document.querySelectorAll(tiltTargets.join(',')));
 
-        const cards = Array.from(document.querySelectorAll('.project-card'));
         cards.forEach((card) => {
+            card.classList.add('tilt-card');
+
+            let resetTimerId = 0;
+
             function resetTilt() {
+                window.clearTimeout(resetTimerId);
                 card.classList.remove('is-tilting');
                 card.style.setProperty('--tilt-x', '0deg');
                 card.style.setProperty('--tilt-y', '0deg');
@@ -120,24 +129,77 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.style.setProperty('--shine-y', '50%');
             }
 
-            card.addEventListener('pointermove', (event) => {
-                if (event.pointerType === 'touch') return;
-
+            function updateTilt(event, strength = 16) {
                 const rect = card.getBoundingClientRect();
                 const x = event.clientX - rect.left;
                 const y = event.clientY - rect.top;
-                const rotateY = ((x / rect.width) - 0.5) * 16;
-                const rotateX = ((0.5 - (y / rect.height)) * 16);
+                const rotateY = ((x / rect.width) - 0.5) * strength;
+                const rotateX = ((0.5 - (y / rect.height)) * strength);
 
                 card.classList.add('is-tilting');
                 card.style.setProperty('--tilt-x', `${rotateX.toFixed(2)}deg`);
                 card.style.setProperty('--tilt-y', `${rotateY.toFixed(2)}deg`);
                 card.style.setProperty('--shine-x', `${((x / rect.width) * 100).toFixed(2)}%`);
                 card.style.setProperty('--shine-y', `${((y / rect.height) * 100).toFixed(2)}%`);
+            }
+
+            card.addEventListener('pointermove', (event) => {
+                if (event.pointerType === 'touch') return;
+                updateTilt(event, 16);
             });
 
+            card.addEventListener('pointerdown', (event) => {
+                updateTilt(event, event.pointerType === 'touch' ? 10 : 16);
+                if (event.pointerType === 'touch' || event.pointerType === 'pen') {
+                    resetTimerId = window.setTimeout(resetTilt, 520);
+                }
+            });
+
+            card.addEventListener('pointerup', () => {
+                resetTimerId = window.setTimeout(resetTilt, 180);
+            });
             card.addEventListener('pointerleave', resetTilt);
             card.addEventListener('pointercancel', resetTilt);
+        });
+    }
+
+    function initGridFocus() {
+        const supportsFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        const grids = Array.from(document.querySelectorAll('.ai-class-grid'));
+        if (grids.length === 0) return;
+
+        grids.forEach((grid) => {
+            grid.classList.add('interactive-grid');
+            const cells = Array.from(grid.querySelectorAll('div'));
+
+            if (!supportsFinePointer) return;
+
+            grid.addEventListener('pointermove', (event) => {
+                const rect = grid.getBoundingClientRect();
+                const x = ((event.clientX - rect.left) / rect.width) * 100;
+                const y = ((event.clientY - rect.top) / rect.height) * 100;
+                grid.style.setProperty('--grid-shine-x', `${x.toFixed(2)}%`);
+                grid.style.setProperty('--grid-shine-y', `${y.toFixed(2)}%`);
+            });
+
+            grid.addEventListener('pointerleave', () => {
+                grid.style.setProperty('--grid-shine-x', '50%');
+                grid.style.setProperty('--grid-shine-y', '50%');
+            });
+
+            cells.forEach((cell) => {
+                cell.addEventListener('mouseenter', () => {
+                    cells.forEach((item) => {
+                        item.classList.toggle('is-muted', item !== cell);
+                    });
+                });
+            });
+
+            grid.addEventListener('mouseleave', () => {
+                cells.forEach((cell) => {
+                    cell.classList.remove('is-muted');
+                });
+            });
         });
     }
 
@@ -362,14 +424,14 @@ document.addEventListener('DOMContentLoaded', () => {
         let filteredCommands = [];
 
         function goToSection(selector) {
+            const target = document.querySelector(selector);
             closePalette();
-            const navLink = document.querySelector(`.site-nav a[href="${selector}"]`);
-            if (navLink) {
-                navLink.click();
-                return;
-            }
+            if (!target) return;
 
-            document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const header = document.querySelector('.site-header');
+            const headerHeight = header ? header.getBoundingClientRect().height : 0;
+            const top = target.getBoundingClientRect().top + window.scrollY - headerHeight + 6;
+            window.scrollTo({ top, behavior: 'smooth' });
         }
 
         const commands = [
@@ -446,6 +508,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 action: () => goToSection('#ai-training')
             },
             {
+                title: '前往多元表現',
+                desc: '查看班級幹部、FTC 隊長與程式組長整合能力',
+                icon: 'fa-people-group',
+                keys: 'L',
+                keywords: 'leadership growth experience 多元 表現 整合 能力 幹部 隊長 程式組長',
+                action: () => goToSection('#experience')
+            },
+            {
                 title: '\u89f8\u767c GOLD \u5f69\u86cb',
                 desc: '\u555f\u52d5\u96b1\u85cf\u91d1\u8272\u6548\u679c',
                 icon: 'fa-wand-magic-sparkles',
@@ -457,6 +527,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         ];
+
+        function syncCommandSelection() {
+            list.querySelectorAll('.command-item').forEach((button, index) => {
+                const isSelected = index === selectedIndex;
+                button.classList.toggle('is-active', isSelected);
+                button.setAttribute('aria-selected', String(isSelected));
+            });
+        }
 
         function renderCommands() {
             const query = input.value.trim().toLowerCase();
@@ -485,7 +563,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
                 button.addEventListener('mouseenter', () => {
                     selectedIndex = index;
-                    renderCommands();
+                    syncCommandSelection();
                 });
                 button.addEventListener('click', () => command.action());
                 list.appendChild(button);
@@ -902,24 +980,19 @@ document.addEventListener('DOMContentLoaded', () => {
             about: [
                 '.section-kicker',
                 '.section-title',
-                '.story-copy',
-                '.metric-strip > div'
+                '.story-copy'
             ],
             'cpp-stl': [
                 '.section-kicker',
                 '.section-title',
                 '.section-jump',
                 '.ai-lab-intro',
-                '.ai-class-grid div',
-                '.ai-process article',
                 '.ai-insight-panel'
             ],
             programming: [
                 '.section-kicker',
                 '.section-title',
-                '.section-jump',
-                '.split-panel article',
-                '.capability-row article'
+                '.section-jump'
             ],
             robotics: [
                 '.section-kicker',
@@ -934,16 +1007,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 '.section-title',
                 '.section-jump',
                 '.ai-lab-intro',
-                '.ai-class-grid div',
-                '.ai-process article',
                 '.ai-insight-panel'
             ],
             physics: [
                 '.section-kicker',
                 '.section-title',
-                '.story-copy',
-                '.metric-strip > div',
-                '.capability-row article'
+                '.story-copy'
             ],
             experiment: [
                 '.section-kicker',
@@ -954,14 +1023,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 '.section-kicker',
                 '.section-title',
                 '.ai-lab-intro',
-                '.ai-class-grid div',
-                '.ai-process article',
                 '.ai-insight-panel'
             ],
             experience: [
                 '.section-kicker',
-                '.section-title',
-                '.growth-grid article'
+                '.section-title'
             ]
         };
 
@@ -1126,6 +1192,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initParticles();
     initSpotlight();
     initProjectTilt();
+    initGridFocus();
     initProjectSlotMachine();
     initCommandPalette();
     initEasterEgg();

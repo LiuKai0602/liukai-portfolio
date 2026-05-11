@@ -374,20 +374,14 @@ body.has-scene-scroll .contact-info,
 body.has-scene-scroll .contact-item,
 body.has-scene-scroll .contact-form,
 body.has-scene-scroll .story-copy,
-body.has-scene-scroll .metric-strip > div,
-body.has-scene-scroll .split-panel article,
-body.has-scene-scroll .capability-row article,
 body.has-scene-scroll .robot-hero,
 body.has-scene-scroll .robot-flow,
 body.has-scene-scroll .robot-copy,
 body.has-scene-scroll .robot-system,
 body.has-scene-scroll .timeline article,
-body.has-scene-scroll .growth-grid article,
 body.has-scene-scroll .match-table div,
 body.has-scene-scroll .closing-panel,
 body.has-scene-scroll .ai-lab-intro,
-body.has-scene-scroll .ai-class-grid div,
-body.has-scene-scroll .ai-process article,
 body.has-scene-scroll .ai-insight-panel {
   opacity: 0;
   filter: blur(14px);
@@ -482,24 +476,23 @@ body.has-scene-scroll main > section[id].is-visible .contact-info,
 body.has-scene-scroll main > section[id].is-visible .contact-item,
 body.has-scene-scroll main > section[id].is-visible .contact-form,
 body.has-scene-scroll main > section[id].is-visible .story-copy,
-body.has-scene-scroll main > section[id].is-visible .metric-strip > div,
-body.has-scene-scroll main > section[id].is-visible .split-panel article,
-body.has-scene-scroll main > section[id].is-visible .capability-row article,
 body.has-scene-scroll main > section[id].is-visible .robot-hero,
 body.has-scene-scroll main > section[id].is-visible .robot-flow,
 body.has-scene-scroll main > section[id].is-visible .robot-copy,
 body.has-scene-scroll main > section[id].is-visible .robot-system,
 body.has-scene-scroll main > section[id].is-visible .timeline article,
-body.has-scene-scroll main > section[id].is-visible .growth-grid article,
 body.has-scene-scroll main > section[id].is-visible .match-table div,
 body.has-scene-scroll main > section[id].is-visible .closing-panel,
 body.has-scene-scroll main > section[id].is-visible .ai-lab-intro,
-body.has-scene-scroll main > section[id].is-visible .ai-class-grid div,
-body.has-scene-scroll main > section[id].is-visible .ai-process article,
 body.has-scene-scroll main > section[id].is-visible .ai-insight-panel {
   opacity: 1;
   filter: blur(0);
   transform: translate3d(0, 0, 0);
+}
+
+body.has-scene-scroll main > section[id].is-visible .tilt-card:hover,
+body.has-scene-scroll main > section[id].is-visible .tilt-card.is-tilting {
+  transform: perspective(900px) rotateX(calc(var(--tilt-x) * 0.62)) rotateY(calc(var(--tilt-y) * 0.62)) translateY(-4px);
 }
 
 body.has-scene-scroll main > section[id].is-visible .scroll-indicator {
@@ -1264,6 +1257,72 @@ body.theme-light .slot-reel {
 
 .project-card:nth-child(4) {
   animation-delay: -4.2s;
+}
+
+.tilt-card {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --shine-x: 50%;
+  --shine-y: 50%;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  touch-action: manipulation;
+  transform-origin: center;
+  transform: perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0);
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition:
+    transform 0.14s ease-out,
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.tilt-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(
+    360px circle at var(--shine-x) var(--shine-y),
+    rgba(255, 244, 214, 0.18),
+    rgba(216, 180, 106, 0.07) 28%,
+    transparent 62%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.tilt-card:hover,
+.tilt-card.is-tilting {
+  border-color: rgba(216, 180, 106, 0.34);
+  box-shadow: 0 22px 64px -46px rgba(216, 180, 106, 0.48);
+}
+
+.tilt-card:hover,
+.tilt-card.is-tilting {
+  transform: perspective(900px) rotateX(calc(var(--tilt-x) * 0.62)) rotateY(calc(var(--tilt-y) * 0.62)) translateY(-4px);
+}
+
+.tilt-card.is-tilting {
+  transition-duration: 0.08s;
+}
+
+.tilt-card:active {
+  transition-duration: 0.08s;
+}
+
+body.has-scene-scroll main > section[id].is-visible .tilt-card:hover,
+body.has-scene-scroll main > section[id].is-visible .tilt-card.is-tilting {
+  border-color: rgba(216, 180, 106, 0.38);
+  box-shadow: 0 22px 64px -44px rgba(216, 180, 106, 0.56);
+}
+
+.tilt-card:hover::after,
+.tilt-card.is-tilting::after {
+  opacity: 1;
 }
 
 .project-card::after {
@@ -4536,16 +4595,58 @@ body.theme-light .robot-hero p {
 }
 
 .ai-class-grid {
+  --grid-shine-x: 50%;
+  --grid-shine-y: 50%;
+  position: relative;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0;
   overflow: hidden;
 }
 
+.ai-class-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      520px circle at var(--grid-shine-x) var(--grid-shine-y),
+      rgba(255, 229, 168, 0.16),
+      rgba(216, 180, 106, 0.07) 32%,
+      transparent 66%
+    ),
+    linear-gradient(110deg, transparent 0%, rgba(255, 230, 170, 0.08) 48%, transparent 58%);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.ai-class-grid.interactive-grid:hover::before {
+  opacity: 1;
+}
+
 .ai-class-grid div {
+  position: relative;
+  z-index: 1;
   padding: 1.2rem;
   border-right: 1px solid rgba(216, 180, 106, 0.14);
   border-bottom: 1px solid rgba(216, 180, 106, 0.14);
+  transition:
+    background var(--transition-fast),
+    box-shadow var(--transition-fast),
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.ai-class-grid.interactive-grid div:hover {
+  background: rgba(216, 180, 106, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255, 226, 162, 0.16);
+  transform: translateY(-2px);
+}
+
+.ai-class-grid.interactive-grid div.is-muted {
+  opacity: 0.46;
 }
 
 .ai-class-grid div:nth-child(2n) {
@@ -5443,6 +5544,12 @@ body.theme-light .hero-signal ul {
   .project-card.is-pressed {
     animation: none;
     translate: 0 0;
+  }
+
+  .tilt-card,
+  .tilt-card.is-tilting {
+    transform: none;
+    transition: none;
   }
 
   .card-ripple {
