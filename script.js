@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             follower.style.opacity = '0.85';
         });
 
-        document.querySelectorAll('a, button, input, textarea, .project-card, .copyable').forEach((element) => {
+        document.querySelectorAll('a, button, input, textarea').forEach((element) => {
             element.addEventListener('mouseenter', () => {
                 hoveringInteractive = true;
             });
@@ -200,108 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     cell.classList.remove('is-muted');
                 });
             });
-        });
-    }
-
-    // The slot machine is presentation only: each spin chooses one of the four
-    // learning categories with equal probability, then reveals themed symbols.
-    function initProjectSlotMachine() {
-        const machine = document.querySelector('.slot-machine');
-        if (!machine) return;
-
-        const reels = Array.from(machine.querySelectorAll('.slot-reel'));
-        const spinButton = machine.querySelector('.slot-spin');
-        const result = machine.querySelector('.slot-result');
-        if (reels.length === 0 || !spinButton || !result) return;
-
-        const symbols = ['LOGIC', 'STL', 'CODE', 'BUILD', 'FTC', 'TEST', 'AI', 'DATA', 'FIX', 'SCI', 'BIO', 'PHY'];
-        const picks = [
-            {
-                key: 'logic',
-                symbols: ['LOGIC', 'STL', 'CODE'],
-                title: '\u908f\u8f2f\u63a8\u7406\uff5cSTL \u7a0b\u5f0f\u5b78\u7fd2\u6210\u679c',
-                reason: '\u9069\u5408\u67e5\u770b C++ STL\u3001\u8cc7\u6599\u7d50\u69cb\u8207\u6f14\u7b97\u6cd5\u601d\u8def\u3002'
-            },
-            {
-                key: 'build',
-                symbols: ['BUILD', 'FTC', 'TEST'],
-                title: '\u52d5\u624b\u5be6\u4f5c\uff5cFTC \u6a5f\u5668\u4eba\u5c08\u984c',
-                reason: '\u9069\u5408\u67e5\u770b\u6a5f\u5668\u4eba\u8a2d\u8a08\u3001\u7d44\u88dd\u3001\u6e2c\u8a66\u8207\u8abf\u6574\u3002'
-            },
-            {
-                key: 'solve',
-                symbols: ['AI', 'DATA', 'FIX'],
-                title: '\u89e3\u6c7a\u554f\u984c\uff5cAI \u8a13\u7df4\u5b78\u7fd2\u6210\u679c',
-                reason: '\u9069\u5408\u67e5\u770b AI \u8a13\u7df4\u3001\u8f38\u51fa\u89c0\u5bdf\u8207\u53cd\u8986\u6539\u9032\u7684\u904e\u7a0b\u3002'
-            },
-            {
-                key: 'science',
-                symbols: ['SCI', 'BIO', 'PHY'],
-                title: '\u79d1\u5b78\u80fd\u529b\uff5c\u751f\u7269\u8207\u7269\u7406\u63a2\u7a76',
-                reason: '\u9069\u5408\u67e5\u770b\u89c0\u5bdf\u3001\u5047\u8a2d\u3001\u8b8a\u56e0\u63a7\u5236\u8207\u6578\u64da\u5224\u8b80\u3002'
-            }
-        ];
-
-        let isSpinning = false;
-
-        function randomSymbol() {
-            return symbols[Math.floor(Math.random() * symbols.length)];
-        }
-
-        function choosePick() {
-            return picks[Math.floor(Math.random() * picks.length)];
-        }
-
-        function clearRecommendation() {
-            document.querySelectorAll('.project-card.is-recommended').forEach((card) => {
-                card.classList.remove('is-recommended');
-            });
-        }
-
-        function highlightPick(key) {
-            clearRecommendation();
-            const card = document.querySelector(`.project-card[data-slot-key="${key}"]`);
-            if (!card) return;
-
-            card.classList.add('is-recommended');
-            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-
-        spinButton.addEventListener('click', () => {
-            if (isSpinning) return;
-
-            isSpinning = true;
-            spinButton.disabled = true;
-            result.textContent = '\u8f49\u52d5\u4e2d...';
-            clearRecommendation();
-            reels.forEach((reel) => reel.classList.add('is-spinning'));
-
-            let ticks = 0;
-            const maxTicks = 22 + Math.floor(Math.random() * 8);
-            const timerId = window.setInterval(() => {
-                ticks += 1;
-                reels.forEach((reel) => {
-                    reel.textContent = randomSymbol();
-                });
-
-                if (ticks < maxTicks) return;
-
-                window.clearInterval(timerId);
-                const pick = choosePick();
-                // We stop on a deterministic trio so the final result clearly
-                // matches the highlighted portfolio card.
-                const finalSymbols = pick.symbols;
-                reels.forEach((reel, index) => {
-                    reel.textContent = finalSymbols[index];
-                    reel.classList.remove('is-spinning');
-                });
-
-                result.textContent = `\u63a8\u85a6\u6210\u679c\uff1a${pick.title} - ${pick.reason}`;
-                spinButton.disabled = false;
-                isSpinning = false;
-                highlightPick(pick.key);
-                showToast(`\u63a8\u85a6\u6210\u679c\uff1a${pick.title}`);
-            }, 70);
         });
     }
 
@@ -658,44 +556,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Skill bars only need a CSS custom property; CSS handles the fill animation.
-    function initSkillBars() {
-        document.querySelectorAll('.skill-bar').forEach((bar) => {
-            const level = bar.getAttribute('data-level') || '0%';
-            bar.style.setProperty('--skill-level', level);
-        });
-    }
-
-    function initSkillFilters() {
-        const buttons = Array.from(document.querySelectorAll('.filter-btn'));
-        const categories = Array.from(document.querySelectorAll('.skill-category'));
-        if (buttons.length === 0 || categories.length === 0) return;
-
-        function setActiveButton(activeButton) {
-            buttons.forEach((button) => {
-                const isActive = button === activeButton;
-                button.classList.toggle('is-active', isActive);
-                button.setAttribute('aria-selected', String(isActive));
-            });
-        }
-
-        function applyFilter(filter) {
-            categories.forEach((category) => {
-                const current = category.getAttribute('data-category');
-                const isVisible = filter === 'all' || current === filter;
-                category.classList.toggle('is-hidden', !isVisible);
-            });
-        }
-
-        buttons.forEach((button) => {
-            button.addEventListener('click', () => {
-                const filter = button.getAttribute('data-filter') || 'all';
-                setActiveButton(button);
-                applyFilter(filter);
-            });
-        });
-    }
-
     function initRobotSystem() {
         const controls = Array.from(document.querySelectorAll('.robot-part'));
         const detail = document.querySelector('.robot-detail');
@@ -950,15 +810,6 @@ document.addEventListener('DOMContentLoaded', () => {
         render(activeControl.dataset.robotPart);
     }
 
-    function initPdfPlaceholder() {
-        const button = document.querySelector('.pdf-placeholder');
-        if (!button) return;
-
-        button.addEventListener('click', () => {
-            showToast('完整 PDF 檔案可以之後再放到 assets 資料夾或改成雲端連結');
-        });
-    }
-
     // Each full-screen section gets its own scene timing so the page feels
     // closer to a product-style presentation instead of one long document.
     function initScrollReveal() {
@@ -1193,13 +1044,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initSpotlight();
     initProjectTilt();
     initGridFocus();
-    initProjectSlotMachine();
     initCommandPalette();
     initEasterEgg();
-    initSkillBars();
-    initSkillFilters();
     initRobotSystem();
-    initPdfPlaceholder();
     initScrollReveal();
     initSmoothAnchorScroll();
     initActiveNav();
